@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নখাপাড়া সরকারি প্রাথমিক বিদ্যালয় | ডিজিটাল ব্যবস্থাপনা সিস্টেম</title>
+    <!-- মোবাইল অ্যাপ (PWA) সেটিংস -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#14532d">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="নখাপাড়া সপ্রাবি">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans Bengali & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans Bengali"', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            950: '#052e16',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            body * { visibility: hidden; }
+            .printable-area, .printable-area * { visibility: visible; }
+            .printable-area { position: absolute; left: 0; top: 0; width: 100%; margin: 0; padding: 20px; box-shadow: none !important; border: none !important; background: white; }
+            .no-print { display: none !important; }
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col font-sans antialiased min-h-screen">
+
+    <!-- Top Header Banner -->
+    <header class="bg-gradient-to-r from-brand-900 via-brand-800 to-emerald-900 text-white shadow-xl relative overflow-hidden no-print shrink-0">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent_50%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:py-6 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+            <div class="flex items-center gap-4 text-center md:text-left">
+                <!-- বিদ্যালয়ের লোগো (SVG) -->
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-lg shrink-0 mx-auto md:mx-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="নখাপাড়া সপ্রাবি, বীরগঞ্জ, দিনাজপুর — স্থাপিতঃ ১৯৮৯ খ্রীঃ" class="w-full h-full">
+<defs><clipPath id="logoLight"><circle cx="50" cy="47" r="25"/></clipPath></defs>
+<circle cx="50" cy="50" r="49" fill="#14532d"/>
+<circle cx="50" cy="50" r="47.3" fill="none" stroke="#f59e0b" stroke-width="1.3"/>
+<text font-family="'Noto Sans Bengali','FreeSans',sans-serif" font-weight="700" font-size="7.2" fill="#ffffff" x="50" y="21" text-anchor="middle">নখাপাড়া সপ্রাবি</text>
+<circle cx="50" cy="47" r="25.8" fill="#f59e0b"/>
+<circle cx="50" cy="47" r="24.6" fill="#f0fdf4"/>
+<g clip-path="url(#logoLight)">
+<g transform="translate(50 44) scale(0.5) translate(-50 -49)">
+<g stroke="#f59e0b" stroke-width="3.2" stroke-linecap="round"><line x1="64" y1="44" x2="70" y2="44"/><line x1="62.1" y1="37" x2="67.3" y2="34"/><line x1="57" y1="31.9" x2="60" y2="26.7"/><line x1="50" y1="30" x2="50" y2="24"/><line x1="43" y1="31.9" x2="40" y2="26.7"/><line x1="37.9" y1="37" x2="32.7" y2="34"/><line x1="36" y1="44" x2="30" y2="44"/></g>
+<circle cx="50" cy="44" r="10" fill="#f59e0b"/>
+<path d="M50 74 C42 68 31 67 22 70 L22 54 C31 51 42 52 50 58 Z" fill="#15803d"/>
+<path d="M50 74 C58 68 69 67 78 70 L78 54 C69 51 58 52 50 58 Z" fill="#16a34a"/>
+<line x1="50" y1="58" x2="50" y2="74" stroke="#f0fdf4" stroke-width="2"/>
+<path d="M27 59 C34 57.5 41 58 46 61.5 M27 63.5 C34 62 41 62.5 46 66 M73 59 C66 57.5 59 58 54 61.5 M73 63.5 C66 62 59 62.5 54 66" fill="none" stroke="#f0fdf4" stroke-width="1.3" stroke-linecap="round" opacity=".8"/>
+</g></g>
+<rect x="24" y="58.5" width="52" height="9.5" rx="1.5" fill="#f59e0b" stroke="#14532d" stroke-width=".8"/>
+<text font-family="'Noto Sans Bengali','FreeSans',sans-serif" font-weight="700" font-size="6.3" fill="#14532d" x="50" y="65.6" text-anchor="middle">স্থাপিতঃ ১৯৮৯ খ্রীঃ</text>
+<text font-family="'Noto Sans Bengali','FreeSans',sans-serif" font-weight="700" font-size="6.8" fill="#fde68a" x="50" y="83" text-anchor="middle">বীরগঞ্জ, দিনাজপুর</text>
+<circle cx="12.5" cy="47" r="1.6" fill="#f59e0b"/><circle cx="87.5" cy="47" r="1.6" fill="#f59e0b"/>
+</svg>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-white drop-shadow-sm">নখাপাড়া সরকারি প্রাথমিক বিদ্যালয়</h1>
+                    <p class="text-xs sm:text-sm text-emerald-100 mt-1 flex flex-wrap justify-center md:justify-start gap-x-3 gap-y-1">
+                        <span><i class="fas fa-id-badge text-amber-300 mr-1"></i> কোডঃ ১৫০৪৬১</span>
+                        <span><i class="fas fa-calendar-alt text-amber-300 mr-1"></i> স্থাপিতঃ ১৯৮৯ খ্রীঃ</span>
+                        <span><i class="fas fa-fingerprint text-amber-300 mr-1"></i> EMIS: ৯৯১০৩১২০৬০৪</span>
+                    </p>
+                    <p class="text-xs text-emerald-200 mt-1">
+                        <i class="fas fa-map-marker-alt text-amber-300 mr-1"></i> ডাকঘরঃ কল্যাণীহাট-৫২২০, উপজেলাঃ বীরগঞ্জ, জেলাঃ দিনাজপুর
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button id="installAppBtn" onclick="installApp()" class="hidden px-4 py-2 bg-white text-brand-800 hover:bg-emerald-50 text-sm font-bold rounded-xl shadow-lg transition-all items-center gap-2">
+                    <i class="fas fa-mobile-alt"></i> অ্যাপ ইনস্টল করুন
+                </button>
+                <button onclick="switchTab('teachers')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-xl border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
+                    <i class="fas fa-cog text-amber-300"></i> শিক্ষক সেটিংস
+                </button>
+                <button onclick="switchTab('backup')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-900 text-sm font-bold rounded-xl shadow-lg transition-all flex items-center gap-2">
+                    <i class="fas fa-database"></i> ব্যাকআপ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto no-scrollbar space-x-2 py-3">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all shrink-0 flex items-center gap-2 bg-brand-50 text-brand-700 border border-brand-200 shadow-sm">
+                <i class="fas fa-chart-pie text-base"></i> ড্যাশবোর্ড
+            </button>
+            <button onclick="switchTab('teachers')" id="nav-teachers" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-chalkboard-teacher text-base"></i> শিক্ষক প্রোফাইল
+            </button>
+            <button onclick="switchTab('evaluation')" id="nav-evaluation" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-clipboard-list text-base"></i> মূল্যায়ন রেজিস্টার
+            </button>
+            <button onclick="switchTab('lessonplan')" id="nav-lessonplan" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-book-reader text-base"></i> পাঠ পরিকল্পনা ও পাঠটিকা সমূহ
+            </button>
+            <button onclick="switchTab('certificates')" id="nav-certificates" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-certificate text-base"></i> সনদ ও সার্টিফিকেট
+            </button>
+            <button onclick="switchTab('students')" id="nav-students" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-user-graduate text-base"></i> শিক্ষার্থী প্রোফাইল
+            </button>
+            <button onclick="switchTab('gallery')" id="nav-gallery" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-images text-base"></i> ফটো গ্যালারি
+            </button>
+            <button onclick="switchTab('backup')" id="nav-backup" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-hdd text-base"></i> ডেটা ব্যাকআপ
+            </button>
+            <button onclick="switchTab('glance')" id="nav-glance" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-shield-alt text-base"></i> এক নজরে
+            </button>
+            <button onclick="switchTab('gps')" id="nav-gps" class="tab-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-all shrink-0 flex items-center gap-2">
+                <i class="fas fa-location-dot text-base"></i> অবস্থান ও উপস্থিতি
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 pb-20">
+
+        <!-- TAB 1: DASHBOARD -->
+        <section id="tab-dashboard" class="tab-content space-y-6">
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider text-amber-300 inline-block mb-3">ডিজিটাল প্রাতিষ্ঠানিক প্ল্যাটফর্ম</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold tracking-tight mb-3">ডিজিটাল ফলাফল, সনদ ও পাঠটিকা ব্যবস্থাপনা</h2>
+                    <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-6">নখাপাড়া সরকারি প্রাথমিক বিদ্যালয়ের সকল প্রশাসনিক কার্যক্রম, ধারাবাহিক মূল্যায়ন এবং প্রতিদিনের নতুন পাঠটিকা এখন সহজেই তৈরি ও সংরক্ষণ করুন।</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="openLessonModal()" class="px-5 py-2.5 bg-white text-brand-800 font-semibold rounded-xl shadow-md hover:bg-emerald-50 transition-all flex items-center gap-2">
+                            <i class="fas fa-plus-circle"></i> প্রতিদিনের পাঠটিকা যোগ করুন
+                        </button>
+                        <button onclick="switchTab('certificates')" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                            <i class="fas fa-print"></i> সার্টিফিকেট প্রিন্ট
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 text-xl font-bold">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">মোট শিক্ষার্থী</p>
+                        <h4 id="statTotalStudents" class="text-2xl font-bold text-slate-800">০</h4>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-xl font-bold">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">সংরক্ষিত পাঠটিকা</p>
+                        <h4 id="statTotalLessons" class="text-2xl font-bold text-slate-800">০</h4>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 text-xl font-bold">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">সনদ প্রস্তুতকরণ</p>
+                        <h4 class="text-2xl font-bold text-slate-800">৩টি ধরন</h4>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center gap-4">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-xl font-bold">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">বিদ্যালয় কোড</p>
+                        <h4 class="text-xl font-bold text-slate-800">১৫০৪৬১</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-all">
+                    <div>
+                        <div class="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center text-brand-600 text-lg mb-4">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">প্রতিদিনের পাঠটিকা সংযোজন</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">১ম থেকে ৫ম শ্রেণির সকল বিষয়ের জন্য প্রতিদিনের তারিখ অনুযায়ী পাঠটিকা, শিখনফল ও বাড়ির কাজ যুক্ত ও পরিচালনা করুন।</p>
+                    </div>
+                    <button onclick="switchTab('lessonplan')" class="w-full py-2.5 bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-700 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                        পাঠটিকা তালিকা দেখুন <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-all">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-lg mb-4">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">মূল্যায়ন রেজিস্টার</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">শিক্ষার্থীদের ধারাবাহিক মূল্যায়ন রেকর্ড ও ধারাবাহিক পারফরম্যান্স খাতা সংরক্ষণ ও গ্রেডিং পর্যবেক্ষণ করুন।</p>
+                    </div>
+                    <button onclick="switchTab('evaluation')" class="w-full py-2.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-700 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                        রেজিস্টার খুলুন <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:border-brand-500 transition-all">
+                    <div>
+                        <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 text-lg mb-4">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg mb-2">সনদ মেনু ও সার্টিফিকেট</h3>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">প্রশংসা সনদ, প্রত্যয়ন সনদ এবং ছাড়পত্র (TC) খুব সহজেই পূরণ করে প্রিন্ট বা ডাউনলোড করুন।</p>
+                    </div>
+                    <button onclick="switchTab('certificates')" class="w-full py-2.5 bg-slate-100 hover:bg-amber-50 text-slate-700 hover:text-amber-700 font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                        সনদ তৈরি করুন <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: TEACHERS DIRECTORY -->
+        <section id="tab-teachers" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-xl font-bold text-center text-emerald-800 mb-6">শিক্ষকবৃন্দের প্রোফাইল</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-center border-collapse bg-white rounded-xl overflow-hidden border border-slate-200">
+                        <thead>
+                            <tr class="bg-emerald-800 text-white text-sm">
+                                <th class="p-3 border">ছবি</th>
+                                <th class="p-3 border">নাম</th>
+                                <th class="p-3 border">পদবি</th>
+                                <th class="p-3 border">ঠিকানা</th>
+                                <th class="p-3 border">মোবাইল নম্বর</th>
+                                <th class="p-3 border">ই-মেইল</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/d05mwXrQ/1791260339501.jpg" alt="প্রধান শিক্ষক" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">জনাব চিত্তরঞ্জন রায়</td>
+                                <td class="p-2 border">প্রধান শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৭৫১-৪৩০৭৭৬</td>
+                                <td class="p-2 border">headmaster@gmail.com</td>
+                            </tr>
+                            <tr class="border-b bg-slate-50">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/YSdfMVYp/1791260232942.jpg" alt="বুবলী রানী ঘোষ" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">জনাব বুবলী রানী ঘোষ</td>
+                                <td class="p-2 border">সহকারী শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৭১০-৩৮০৭১৩</td>
+                                <td class="p-2 border">bubly.at79@gmail.com</td>
+                            </tr>
+                             <tr class="border-b bg-slate-50">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/mrmNBqCk/1791259519676.png" alt="তোফায়েল তোরাব" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">জনাব তোফায়েল তোরাব</td>
+                                <td class="p-2 border">সহকারী শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৬০১৮১৬৬৪৯</td>
+                                <td class="p-2 border">tt.physics9899@gmail.com</td>
+                            </tr>
+                             <tr class="border-b bg-slate-50">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/k5TFqZKg/1791260163049.jpg" alt="রাজেদুন্নাহার" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">জনাব রাজেদুন্নাহার</td>
+                                <td class="p-2 border">সহকারী শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৭৩৪-৩৮২১১৪</td>
+                                <td class="p-2 border">rajedun.at114@gmail.com</td>
+                            </tr>
+                             <tr class="border-b bg-slate-50">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/xd6yn7MT/1791260022345.jpg" alt="হাফিজা খাতুন" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">হাফিজা খাতুন</td>
+                                <td class="p-2 border">সহকারী শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৭৩২-০৬৩৯৭২</td>
+                                <td class="p-2 border">hafija.at72@gmail.com</td>
+                            </tr>
+                             <tr class="border-b bg-slate-50">
+                                <td class="p-2 border"><img src="https://i.postimg.cc/mgQCyrmL/sa-na-ya-pada.jpg" alt="শূণ্য পদ" class="w-12 h-12 rounded-full object-cover mx-auto"></td>
+                                <td class="p-2 border font-bold">শূণ্য পদ</td>
+                                <td class="p-2 border">সহকারী শিক্ষক</td>
+                                <td class="p-2 border">বীরগঞ্জ, দিনাজপুর</td>
+                                <td class="p-2 border">০১৭XXXXXXXX</td>
+                                <td class="p-2 border">****@gmail.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: EVALUATION REGISTER -->
+        <section id="tab-evaluation" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 printable-area">
+                <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fas fa-clipboard-list text-brand-600"></i> শিক্ষার্থীদের ধারাবাহিক মূল্যায়ন রেজিস্টার
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 no-print">
+                    <select id="evalClass" onchange="renderEval()" class="p-2.5 border rounded-xl text-sm">
+                        <option value="১ম শ্রেণি">১ম শ্রেণি</option><option value="২য় শ্রেণি">২য় শ্রেণি</option>
+                        <option value="৩য় শ্রেণি">৩য় শ্রেণি</option><option value="৪র্থ শ্রেণি">৪র্থ শ্রেণি</option>
+                        <option value="৫ম শ্রেণি" selected>৫ম শ্রেণি</option>
+                    </select>
+                    <select id="evalSubject" onchange="renderEval()" class="p-2.5 border rounded-xl text-sm">
+                        <option value="বাংলা">বাংলা</option><option value="ইংরেজি">ইংরেজি</option>
+                        <option value="গণিত">গণিত</option><option value="প্রাথমিক বিজ্ঞান">প্রাথমিক বিজ্ঞান</option>
+                        <option value="বাংলাদেশ ও বিশ্বপরিচয়">বাংলাদেশ ও বিশ্বপরিচয়</option>
+                        <option value="ধর্ম ও নৈতিক শিক্ষা">ধর্ম ও নৈতিক শিক্ষা</option>
+                    </select>
+                    <button onclick="window.print()" class="bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-sm py-2.5"><i class="fas fa-print"></i> প্রিন্ট করুন</button>
+                </div>
+
+                <p class="hidden print:block text-sm font-semibold text-slate-700" id="evalPrintTitle"></p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border text-sm min-w-[560px]">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-2 border w-16">রোল</th>
+                                <th class="p-2 border">নাম</th>
+                                <th class="p-2 border">ধারাবাহিক (৪০)</th>
+                                <th class="p-2 border">সামষ্টিক (৬০)</th>
+                                <th class="p-2 border">মোট (১০০)</th>
+                                <th class="p-2 border">গ্রেড</th>
+                            </tr>
+                        </thead>
+                        <tbody id="evalBody"></tbody>
+                    </table>
+                </div>
+                <p id="evalSummary" class="text-xs text-slate-600"></p>
+                <p class="no-print text-xs text-slate-400"><i class="fas fa-info-circle"></i> শিক্ষার্থী "শিক্ষার্থী প্রোফাইল" ট্যাব থেকে আসে। নম্বর লিখলেই নিজে থেকে সংরক্ষিত হয় এবং মোট ও গ্রেড হিসাব হয়। গ্রেডিং: ৮০+ A+, ৭০+ A, ৬০+ A-, ৫০+ B, ৪০+ C, ৩৩+ D, নিচে F।</p>
+            </div>
+        </section>
+
+        <!-- TAB 4: LESSON PLAN MANAGEMENT -->
+        <section id="tab-lessonplan" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                        <i class="fas fa-book-reader text-brand-600"></i> প্রতিদিনের পাঠটিকা ব্যবস্থাপনা (১ম–৫ম শ্রেণি)
+                    </h2>
+                    <p class="text-sm text-slate-500 mt-1">নতুন পাঠ পরিকল্পনা সংযোজন করুন ও শ্রেণি অনুসারে রূপরেখা দেখুন।</p>
+                </div>
+                <button onclick="openLessonModal()" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2 shrink-0">
+                    <i class="fas fa-plus-circle"></i> নতুন পাঠটিকা যোগ করুন
+                </button>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-3">
+                <label class="text-xs font-bold text-slate-600 uppercase">শ্রেণি ফিল্টার:</label>
+                <select id="filterLessonClass" onchange="renderLessonPlans()" class="px-4 py-2 bg-slate-50 border rounded-xl text-sm font-medium">
+                    <option value="">সকল শ্রেণি</option>
+                    <option value="১ম শ্রেণি">১ম শ্রেণি</option>
+                    <option value="২য় শ্রেণি">২য় শ্রেণি</option>
+                    <option value="৩য় শ্রেণি">৩য় শ্রেণি</option>
+                    <option value="৪র্থ শ্রেণি">৪র্থ শ্রেণি</option>
+                    <option value="৫ম শ্রেণি">৫ম শ্রেণি</option>
+                </select>
+            </div>
+
+            <div id="lessonPlanList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+
+        <!-- TAB 5: CERTIFICATE GENERATOR -->
+        <section id="tab-certificates" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                    <i class="fas fa-certificate text-brand-600"></i> অনলাইন সনদ ও সার্টিফিকেট জেনারেটর
+                </h2>
+                <form id="certForm" onsubmit="generateCert(event)" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">সনদের ধরন</label>
+                        <select id="certType" class="w-full p-2 border rounded-xl text-sm">
+                            <option value="প্রশংসা পত্র">প্রশংসা পত্র</option>
+                            <option value="প্রত্যয়ন পত্র">প্রত্যয়ন পত্র</option>
+                            <option value="ছাড়পত্র (TC)">ছাড়পত্র (TC)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">শিক্ষার্থীর নাম</label>
+                        <input type="text" id="certName" placeholder="শিক্ষার্থীর পূর্ণ নাম" required class="w-full p-2 border rounded-xl text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">পিতার নাম</label>
+                        <input type="text" id="certFather" placeholder="পিতার নাম" required class="w-full p-2 border rounded-xl text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">মাতার নাম</label>
+                        <input type="text" id="certMother" placeholder="মাতার নাম" required class="w-full p-2 border rounded-xl text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">শ্রেণি / শিক্ষাবর্ষ</label>
+                        <input type="text" id="certClass" value="৫ম শ্রেণি (২০২৬)" required class="w-full p-2 border rounded-xl text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">রোল নম্বর</label>
+                        <input type="text" id="certRoll" placeholder="যেমন: ০৫" required class="w-full p-2 border rounded-xl text-sm">
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl shadow-md transition-all">সনদ তৈরি ও প্রাক-দর্শন করুন</button>
+                    </div>
+                </form>
+
+                <!-- Certificate Preview Box -->
+                <div id="certificatePreview" class="hidden mt-6 p-8 border-4 border-amber-600 bg-amber-50/30 rounded-2xl printable-area text-center space-y-4">
+                    <h2 class="text-2xl font-bold text-emerald-900 border-b-2 border-emerald-800 pb-2 inline-block">নখাপাড়া সরকারি প্রাথমিক বিদ্যালয়</h2>
+                    <p class="text-xs text-slate-600">বীরগঞ্জ, দিনাজপুর | স্থাপিত: ১৯৮৯</p>
+                    <h3 id="prevCertType" class="text-xl font-bold text-amber-800 uppercase tracking-wide my-4 decoration-amber-500 underline">প্রশংসা পত্র</h3>
+                    <p id="prevBody" class="text-sm leading-relaxed text-slate-800 max-w-2xl mx-auto"></p>
+                    <div class="flex justify-between items-end pt-12 text-xs font-bold">
+                        <div>তারিখ: <span id="prevDate"></span></div>
+                        <div class="border-t border-slate-800 pt-1">প্রধান শিক্ষকের স্বাক্ষর ও সীল</div>
+                    </div>
+                    <button onclick="window.print()" class="no-print mt-6 px-6 py-2 bg-emerald-700 text-white font-bold rounded-xl shadow">প্রিন্ট করুন</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: STUDENT PROFILES -->
+        <section id="tab-students" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-slate-800"><i class="fas fa-user-graduate text-brand-600"></i> শিক্ষার্থী প্রোফাইল তালিকা</h2>
+                    <button onclick="openStudentModal()" class="px-4 py-2 bg-brand-600 text-white font-bold rounded-xl text-sm"><i class="fas fa-plus"></i> শিক্ষার্থী যোগ করুন</button>
+                </div>
+                <div id="studentList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- TAB: PHOTO GALLERY -->
+        <section id="tab-gallery" class="tab-content hidden space-y-6">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-700 via-teal-700 to-brand-800 p-6 sm:p-8 text-white shadow-xl">
+                <div class="absolute -right-10 -top-12 w-56 h-56 rounded-full bg-white/10"></div>
+                <div class="absolute right-28 -bottom-20 w-44 h-44 rounded-full bg-amber-300/10"></div>
+                <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+                    <div>
+                        <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-amber-300 mb-3"><i class="fas fa-camera-retro"></i> বিদ্যালয়ের স্মৃতি</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">ফটো গ্যালারি</h2>
+                        <p class="text-emerald-100 text-sm leading-relaxed max-w-xl">বিদ্যালয়ের অনুষ্ঠান, পরিদর্শন, ক্লাসরুম ও বিভিন্ন মুহূর্তের ছবি এখানে সংরক্ষণ করুন। প্রয়োজনে যেকোনো ছবি মুছেও ফেলতে পারবেন।</p>
+                        <p id="galleryCount" class="mt-3 text-xs font-semibold text-amber-200"></p>
+                    </div>
+                    <div class="shrink-0">
+                        <button onclick="document.getElementById('galleryFileInput').click()" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl shadow-lg transition-all flex items-center gap-2">
+                            <i class="fas fa-cloud-upload-alt"></i> ছবি আপলোড করুন
+                        </button>
+                        <input type="file" id="galleryFileInput" accept="image/*" multiple class="hidden" onchange="handleGalleryFiles(this.files); this.value='';">
+                    </div>
+                </div>
+            </div>
+
+            <div id="galleryDrop" onclick="document.getElementById('galleryFileInput').click()"
+                 ondragover="event.preventDefault(); this.classList.add('border-brand-500','bg-brand-50');"
+                 ondragleave="this.classList.remove('border-brand-500','bg-brand-50');"
+                 ondrop="event.preventDefault(); this.classList.remove('border-brand-500','bg-brand-50'); handleGalleryFiles(event.dataTransfer.files);"
+                 class="cursor-pointer border-2 border-dashed border-slate-300 hover:border-brand-500 hover:bg-brand-50 bg-white rounded-2xl p-6 text-center transition-all">
+                <i class="fas fa-images text-3xl text-brand-500 mb-2"></i>
+                <p class="text-sm font-semibold text-slate-700">ছবি এখানে টেনে এনে ছাড়ুন, অথবা ক্লিক করে বেছে নিন</p>
+                <p class="text-xs text-slate-500 mt-1">একসঙ্গে একাধিক ছবি দেওয়া যাবে। ছবি স্বয়ংক্রিয়ভাবে ছোট করে সংরক্ষিত হয়, তাই জায়গা কম লাগে।</p>
+            </div>
+
+            <div id="galleryStatus" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
+
+            <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+
+            <p class="text-xs text-slate-400 text-center"><i class="fas fa-info-circle"></i> ছবিগুলো এই ডিভাইসের ব্রাউজারে সংরক্ষিত থাকে। অন্য ফোন বা কম্পিউটারে খুললে সেখানে এই ছবি দেখা যাবে না, আর ব্রাউজারের ডেটা মুছলে ছবিও মুছে যাবে।</p>
+        </section>
+
+        <!-- TAB 7: BACKUP & RESTORE -->
+        <section id="tab-backup" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h2 class="text-xl font-bold text-slate-800"><i class="fas fa-database text-brand-600"></i> ডেটা ব্যাকআপ ও রিকভারি</h2>
+                <p class="text-sm text-slate-600">পাঠটিকা, শিক্ষার্থী, মূল্যায়ন, এক নজরে ছকের সব তথ্য, ঊর্ধ্বতন কর্মকর্তার তালিকা, সর্বশেষ পরিদর্শন, শিক্ষকের উপস্থিতি, জিপিএস অবস্থান এবং ফটো গ্যালারির ছবিসহ সবকিছু একটি ফাইলে সংরক্ষণ করুন। ফোন বদলালে বা ব্রাউজারের ডেটা মুছলে এই ফাইল থেকে সব ফিরিয়ে আনা যাবে।</p>
+                <div class="flex flex-wrap gap-4">
+                    <button id="backupExportBtn" onclick="exportData()" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm"><i class="fas fa-download mr-1"></i> ব্যাকআপ ডাউনলোড করুন</button>
+                    <button onclick="document.getElementById('backupFileInput').click()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 border text-slate-700 rounded-xl font-bold text-sm"><i class="fas fa-upload mr-1"></i> রিকভার করুন</button>
+                    <input type="file" id="backupFileInput" accept=".json,application/json" class="hidden" onchange="importData(this.files[0]); this.value='';">
+                </div>
+                <div id="backupStatus" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
+                <p class="text-xs text-slate-400"><i class="fas fa-info-circle"></i> পরামর্শ: নতুন ছবি বা তথ্য যোগ করার পর মাসে অন্তত একবার ব্যাকআপ নিন এবং ফাইলটি গুগল ড্রাইভ বা অন্য ডিভাইসে রাখুন।</p>
+            </div>
+        </section>
+
+        <!-- TAB: GPS (অবস্থান ও উপস্থিতি) -->
+        <section id="tab-gps" class="tab-content hidden space-y-6">
+            <div class="no-print relative overflow-hidden rounded-3xl bg-gradient-to-r from-emerald-700 via-teal-700 to-brand-800 p-6 sm:p-8 text-white shadow-xl">
+                <div class="absolute -right-10 -top-12 w-56 h-56 rounded-full bg-white/10"></div>
+                <div class="relative z-10">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-amber-300 mb-3"><i class="fas fa-location-dot"></i> জিপিএস</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">অবস্থান ও উপস্থিতি</h2>
+                    <p class="text-emerald-100 text-sm leading-relaxed max-w-2xl">বিদ্যালয়ের অবস্থান নির্ধারণ করুন, শিক্ষকের আগমন ও প্রস্থান অবস্থানসহ নথিভুক্ত করুন। ব্রাউজার অবস্থানের অনুমতি চাইবে, "অনুমতি দিন" চাপতে হবে।</p>
+                </div>
+            </div>
+
+            <!-- আজকের উপস্থিতি -->
+            <div class="no-print bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><i class="fas fa-user-check text-brand-600"></i> আজকের উপস্থিতি</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <select id="gpsTeacher" class="p-2.5 border rounded-xl text-sm"></select>
+                    <button id="attInBtn" onclick="markAttendance('in')" class="py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-50"><i class="fas fa-sign-in-alt"></i> আগমন (উপস্থিত)</button>
+                    <button id="attOutBtn" onclick="markAttendance('out')" class="py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl text-sm flex items-center justify-center gap-2 disabled:opacity-50"><i class="fas fa-sign-out-alt"></i> প্রস্থান</button>
+                </div>
+                <div id="gpsMsg" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
+                <div id="attToday" class="overflow-x-auto"></div>
+            </div>
+
+            <!-- মাসিক প্রতিবেদন -->
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 printable-area">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><i class="fas fa-calendar-alt text-brand-600"></i> মাসিক উপস্থিতি প্রতিবেদন</h3>
+                    <div class="no-print flex items-center gap-2">
+                        <input type="month" id="attMonth" onchange="renderAttendance()" class="px-3 py-2 border rounded-xl text-sm">
+                        <button onclick="window.print()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-sm"><i class="fas fa-print"></i> প্রিন্ট</button>
+                    </div>
+                </div>
+                <p id="attPrintTitle" class="hidden print:block text-sm font-semibold text-slate-700"></p>
+                <div id="attSummary" class="overflow-x-auto"></div>
+                <div id="attDetail" class="overflow-x-auto"></div>
+                <p class="no-print text-xs text-slate-400"><i class="fas fa-info-circle"></i> সময় এই ডিভাইসের ঘড়ি থেকে নেওয়া হয়, তাই ফোনের তারিখ ও সময় সঠিক রাখুন। উপস্থিতি শুধু বিদ্যালয়ের নির্ধারিত সীমার ভেতর থেকেই নথিভুক্ত হয়।</p>
+            </div>
+
+            <!-- বিদ্যালয়ের অবস্থান -->
+            <div class="no-print bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2"><i class="fas fa-map-marked-alt text-brand-600"></i> বিদ্যালয়ের অবস্থান ও মানচিত্র</h3>
+                <div id="schoolGeoInfo" class="text-sm text-slate-700"></div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button id="schoolGeoBtn" onclick="saveSchoolGeo()" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm flex items-center gap-2 disabled:opacity-50"><i class="fas fa-crosshairs"></i> বর্তমান অবস্থানকে বিদ্যালয়ের অবস্থান করুন</button>
+                    <a id="schoolMapLink" href="#" target="_blank" rel="noopener" class="hidden px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-sm"><i class="fas fa-external-link-alt"></i> Google Maps-এ দেখুন</a>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-sm text-slate-700">
+                    <label for="geoRadius" class="font-semibold">উপস্থিতির সীমা (মিটার):</label>
+                    <input type="text" id="geoRadius" inputmode="decimal" data-bn-digits autocomplete="off" class="w-24 p-2 border rounded-lg text-center">
+                    <button onclick="saveRadius()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 rounded-lg text-xs font-bold">সীমা সংরক্ষণ</button>
+                    <span class="text-xs text-slate-400">(৫০ থেকে ২০০০ মিটার)</span>
+                </div>
+                <div id="geoMsg" class="hidden rounded-xl px-4 py-3 text-sm font-medium"></div>
+                <iframe id="schoolMapFrame" title="বিদ্যালয়ের মানচিত্র" class="hidden w-full h-72 rounded-2xl border border-slate-200" loading="lazy"></iframe>
+                <p class="text-xs text-slate-400"><i class="fas fa-info-circle"></i> বিদ্যালয়ের অবস্থান একবারই নির্ধারণ করলে হয়। প্রধান শিক্ষক বিদ্যালয়ের ভেতর খোলা জায়গায় দাঁড়িয়ে বাটনটি চাপবেন। মানচিত্র দেখতে ইন্টারনেট লাগে।</p>
+            </div>
+        </section>
+
+         <!-- TAB 8: AT A GLANCE (এডিটেবল পরিদর্শন তথ্য ছক) -->
+        <section id="tab-glance" class="tab-content hidden space-y-6">
+
+            <!-- এক নজরে: সাব-মেন্যু -->
+            <div class="no-print flex flex-wrap gap-2 p-1.5 bg-white border border-slate-200 rounded-2xl shadow-sm w-fit max-w-full">
+                <button type="button" id="glanceSubBtn-chart" onclick="switchGlanceSub('chart')" class="glance-sub-btn px-4 py-2 rounded-xl text-sm transition-all flex items-center gap-2 bg-brand-600 text-white shadow font-semibold">
+                    <i class="fas fa-table"></i> পরিদর্শন তথ্য ছক
+                </button>
+                <button type="button" id="glanceSubBtn-visit" onclick="switchGlanceSub('visit')" class="glance-sub-btn px-4 py-2 rounded-xl text-sm transition-all flex items-center gap-2 text-slate-600 hover:bg-slate-100 font-medium">
+                    <i class="fas fa-calendar-check"></i> সর্বশেষ বিদ্যালয় পরিদর্শন
+                </button>
+                <button type="button" id="glanceSubBtn-officers" onclick="switchGlanceSub('officers')" class="glance-sub-btn px-4 py-2 rounded-xl text-sm transition-all flex items-center gap-2 text-slate-600 hover:bg-slate-100 font-medium">
+                    <i class="fas fa-user-tie"></i> ঊর্ধ্বতন কর্মকর্তা
+                </button>
+            </div>
+
+            <div id="glance-sub-chart">
+            <div class="space-y-8 p-4 md:p-6 bg-white rounded-2xl shadow-sm border border-slate-200 printable-area">
+
+                <!-- বিদ্যালয়ের শিরোনাম -->
+                <div class="text-center space-y-2 border-b border-slate-200 pb-4">
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800">নখাপাড়া সরকারি প্রাথমিক বিদ্যালয়</h2>
+                    <p class="text-sm md:text-base text-slate-600">ডাকঘরঃ কল্যাণীহাট-৫২২০, ক্লাস্টারঃ রঘুনাথপুর, উপজেলাঃ বীরগঞ্জ, জেলাঃ দিনাজপুর</p>
+                     <div class="flex items-center justify-center gap-1 text-xs md:text-sm text-slate-600 pt-1">
+                        <i class="fas fa-envelope text-brand-600"></i>
+                       <span class="font-semibold text-slate-700">ই-মেইল:</span>
+                   <input type="email" id="glance_email" placeholder="ngps.bir89@gmail.com" class="border-b border-slate-300 focus:border-brand-500 text-center outline-none bg-transparent w-64">
+                        </div>
+                    <span class="inline-block px-4 py-1 bg-brand-100 text-brand-800 rounded-full text-xs md:text-sm font-semibold">বিদ্যালয় পরিদর্শন তথ্য ছক</span>
+                    <p id="glanceVisitBadge" class="hidden text-xs md:text-sm text-slate-600 pt-1">সর্বশেষ বিদ্যালয় পরিদর্শন: <strong id="glanceVisitText" class="text-slate-800"></strong></p>
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm text-slate-600 pt-2">
+                        <span class="font-semibold text-slate-700"><i class="fas fa-user-tie text-brand-600"></i> পরিদর্শনকারী কর্মকর্তার পদবি:</span>
+                        <select data-desig-select onchange="onDesigChange(this)" class="max-w-full px-2 py-1 border border-slate-300 rounded-lg bg-white text-slate-800 focus:ring-1 focus:ring-brand-500 outline-none"></select>
+                        <button type="button" onclick="openDesigModal()" class="no-print px-2.5 py-1 text-xs font-semibold text-brand-700 bg-brand-50 hover:bg-brand-100 border border-brand-200 rounded-lg"><i class="fas fa-pen"></i> অপশন সম্পাদনা</button>
+                    </div>
+                </div>
+
+                <!-- ১. শিশু জরিপ ও ভর্তি সংক্রান্ত তথ্য -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-700 mb-3 border-l-4 border-brand-500 pl-2">১. শিশু জরিপ ও ভর্তি তথ্য</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                        <div class="p-4 bg-slate-50 rounded-xl shadow-sm border border-slate-200">
+                            <p class="text-xs text-slate-500 font-medium mb-2">৪ থেকে ১০+ বয়স পর্যন্ত জরিপকৃত শিশু</p>
+                            <div class="text-sm text-slate-700 space-y-2">
+                                <div class="flex items-center gap-2"><span>বালক:</span><input type="text" id="sv1_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center gap-2"><span>বালিকা:</span><input type="text" id="sv1_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center justify-between border-t border-slate-200 pt-2 font-bold text-slate-800">
+                                    <span>মোট:</span><span id="sv1_t" data-sum-of="sv1_b sv1_g" class="text-brand-700">০</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl shadow-sm border border-slate-200">
+                            <p class="text-xs text-slate-500 font-medium mb-2">জরিপকৃত ৫+ শিশুর সংখ্যা</p>
+                            <div class="text-sm text-slate-700 space-y-2">
+                                <div class="flex items-center gap-2"><span>বালক:</span><input type="text" id="sv2_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center gap-2"><span>বালিকা:</span><input type="text" id="sv2_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center justify-between border-t border-slate-200 pt-2 font-bold text-slate-800">
+                                    <span>মোট:</span><span id="sv2_t" data-sum-of="sv2_b sv2_g" class="text-brand-700">০</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl shadow-sm border border-slate-200">
+                            <p class="text-xs text-slate-500 font-medium mb-2">নিজ বিদ্যালয়ে ভর্তিকৃত ৫+ শিশু</p>
+                            <div class="text-sm text-slate-700 space-y-2">
+                                <div class="flex items-center gap-2"><span>বালক:</span><input type="text" id="sv3_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center gap-2"><span>বালিকা:</span><input type="text" id="sv3_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center justify-between border-t border-slate-200 pt-2 font-bold text-slate-800">
+                                    <span>মোট:</span><span id="sv3_t" data-sum-of="sv3_b sv3_g" class="text-brand-700">০</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl shadow-sm border border-slate-200">
+                            <p class="text-xs text-slate-500 font-medium mb-2">অন্য বিদ্যালয়ে ভর্তিকৃত ৫+ শিশু</p>
+                            <div class="text-sm text-slate-700 space-y-2">
+                                <div class="flex items-center gap-2"><span>বালক:</span><input type="text" id="sv4_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center gap-2"><span>বালিকা:</span><input type="text" id="sv4_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full p-1 text-sm border rounded-lg focus:ring-1 focus:ring-brand-500 outline-none"></div>
+                                <div class="flex items-center justify-between border-t border-slate-200 pt-2 font-bold text-slate-800">
+                                    <span>মোট:</span><span id="sv4_t" data-sum-of="sv4_b sv4_g" class="text-brand-700">০</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ২. শ্রেণি ভিত্তিক ভর্তি, উপস্থিতি ও উপবৃত্তিপ্রাপ্ত শিক্ষার্থী -->
+                <div>
+                    <h3 class="text-lg font-bold text-slate-700 mb-3 border-l-4 border-brand-500 pl-2">২. শ্রেণি ভিত্তিক ভর্তি, উপস্থিতি ও উপবৃত্তিপ্রাপ্ত শিক্ষার্থী</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                        <table class="w-full min-w-[720px] text-sm text-slate-600 border-collapse">
+                            <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
+                                <tr>
+                                    <th rowspan="2" class="px-4 py-3 border-r text-center">শ্রেণি</th>
+                                    <th colspan="3" class="px-4 py-2 border-b border-r text-center">ভর্তিকৃত শিশু</th>
+                                    <th colspan="3" class="px-4 py-2 border-b border-r text-center">উপস্থিতি</th>
+                                    <th colspan="3" class="px-4 py-2 border-b text-center">উপবৃত্তিপ্রাপ্ত শিক্ষার্থী</th>
+                                </tr>
+                                <tr>
+                                    <th class="px-2 py-2 border-r text-center">বালক</th>
+                                    <th class="px-2 py-2 border-r text-center">বালিকা</th>
+                                    <th class="px-2 py-2 border-r text-center">মোট</th>
+                                    <th class="px-2 py-2 border-r text-center">বালক</th>
+                                    <th class="px-2 py-2 border-r text-center">বালিকা</th>
+                                    <th class="px-2 py-2 border-r text-center">মোট</th>
+                                    <th class="px-2 py-2 border-r text-center">বালক</th>
+                                    <th class="px-2 py-2 border-r text-center">বালিকা</th>
+                                    <th class="px-2 py-2 text-center">মোট</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-center">
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">প্রাক-প্রাথমিক</td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="cpp_adm_t" data-sum-of="cpp_adm_b cpp_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="cpp_att_t" data-sum-of="cpp_att_b cpp_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="cpp_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="cpp_stp_t" data-sum-of="cpp_stp_b cpp_stp_g">০</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">১ম শ্রেণি</td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c1_adm_t" data-sum-of="c1_adm_b c1_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c1_att_t" data-sum-of="c1_att_b c1_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c1_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="c1_stp_t" data-sum-of="c1_stp_b c1_stp_g">০</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">২য় শ্রেণি</td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c2_adm_t" data-sum-of="c2_adm_b c2_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c2_att_t" data-sum-of="c2_att_b c2_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c2_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="c2_stp_t" data-sum-of="c2_stp_b c2_stp_g">০</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">৩য় শ্রেণি</td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c3_adm_t" data-sum-of="c3_adm_b c3_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c3_att_t" data-sum-of="c3_att_b c3_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c3_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="c3_stp_t" data-sum-of="c3_stp_b c3_stp_g">০</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">৪র্থ শ্রেণি</td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c4_adm_t" data-sum-of="c4_adm_b c4_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c4_att_t" data-sum-of="c4_att_b c4_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c4_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="c4_stp_t" data-sum-of="c4_stp_b c4_stp_g">০</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-3 py-2 font-medium text-slate-900 border-r text-left whitespace-nowrap">৫ম শ্রেণি</td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_adm_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_adm_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c5_adm_t" data-sum-of="c5_adm_b c5_adm_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_att_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_att_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50 border-r"><span id="c5_att_t" data-sum-of="c5_att_b c5_att_g">০</span></td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_stp_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="p-1 border-r"><input type="text" id="c5_stp_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                    <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="c5_stp_t" data-sum-of="c5_stp_b c5_stp_g">০</span></td>
+                                </tr>
+                                <tr class="bg-emerald-50 font-bold text-slate-900 border-t-2 border-emerald-600">
+                                    <td class="px-3 py-2 border-r text-left">মোট</td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_adm_b" data-sum-of="cpp_adm_b c1_adm_b c2_adm_b c3_adm_b c4_adm_b c5_adm_b">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_adm_g" data-sum-of="cpp_adm_g c1_adm_g c2_adm_g c3_adm_g c4_adm_g c5_adm_g">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_adm_t" data-sum-of="cpp_adm_b c1_adm_b c2_adm_b c3_adm_b c4_adm_b c5_adm_b cpp_adm_g c1_adm_g c2_adm_g c3_adm_g c4_adm_g c5_adm_g">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_att_b" data-sum-of="cpp_att_b c1_att_b c2_att_b c3_att_b c4_att_b c5_att_b">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_att_g" data-sum-of="cpp_att_g c1_att_g c2_att_g c3_att_g c4_att_g c5_att_g">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_att_t" data-sum-of="cpp_att_b c1_att_b c2_att_b c3_att_b c4_att_b c5_att_b cpp_att_g c1_att_g c2_att_g c3_att_g c4_att_g c5_att_g">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_stp_b" data-sum-of="cpp_stp_b c1_stp_b c2_stp_b c3_stp_b c4_stp_b c5_stp_b">০</span></td>
+                                    <td class="px-2 py-2 border-r"><span id="ct_stp_g" data-sum-of="cpp_stp_g c1_stp_g c2_stp_g c3_stp_g c4_stp_g c5_stp_g">০</span></td>
+                                    <td class="px-2 py-2"><span id="ct_stp_t" data-sum-of="cpp_stp_b c1_stp_b c2_stp_b c3_stp_b c4_stp_b c5_stp_b cpp_stp_g c1_stp_g c2_stp_g c3_stp_g c4_stp_g c5_stp_g">০</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-600">
+                        <span>প্রাক-প্রাথমিক শিক্ষকের নাম:</span>
+                        <input type="text" id="pp_teacher" placeholder="শিক্ষকের নাম লিখুন" class="p-1 border rounded-lg w-64 focus:ring-1 focus:ring-brand-500 outline-none">
+                    </div>
+                </div>
+
+                <!-- ৩ ও ৪ -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- ৩. একজন শিক্ষকের পাঠদান -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-lg font-bold text-slate-700 mb-3 border-l-4 border-brand-500 pl-2">৩. একজন শিক্ষকের পাঠদান</h3>
+                        <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                            <table class="w-full min-w-[640px] text-sm text-left text-slate-600">
+                                <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
+                                    <tr>
+                                        <th class="px-4 py-3">শিক্ষকের নাম</th>
+                                        <th class="px-4 py-3">বিষয়</th>
+                                        <th class="px-4 py-3">শ্রেণি</th>
+                                        <th class="px-4 py-3">পাঠের বিষয়বস্তু</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr>
+                                        <td class="p-1 align-top"><input type="text" id="tp_name" placeholder="নাম" class="w-full p-1 border rounded"></td>
+                                        <td class="p-1 align-top"><input type="text" id="tp_subject" placeholder="বিষয়" class="w-full p-1 border rounded"></td>
+                                        <td class="p-1 align-top"><input type="text" id="tp_class" placeholder="শ্রেণি" class="w-full p-1 border rounded"></td>
+                                        <td class="p-1 align-top"><textarea id="tp_topic" rows="2" placeholder="পাঠের বিষয়বস্তু লিখুন" class="w-full p-1 border rounded resize-y"></textarea></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- ৪. গত বছরের শিক্ষার্থীর সংখ্যা -->
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-700 mb-3 border-l-4 border-brand-500 pl-2">৪. গত বছরের শিক্ষার্থীর সংখ্যা</h3>
+                        <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+                            <table class="w-full text-sm text-center text-slate-600">
+                                <thead class="text-xs text-slate-700 uppercase bg-slate-100 border-b border-slate-200">
+                                    <tr>
+                                        <th class="px-4 py-3 border-r">শ্রেণি</th>
+                                        <th class="px-4 py-3 border-r">বালক</th>
+                                        <th class="px-4 py-3 border-r">বালিকা</th>
+                                        <th class="px-4 py-3">মোট</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium text-slate-900 border-r">৩য় শ্রেণি</td>
+                                        <td class="p-1 border-r"><input type="text" id="ly3_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="p-1 border-r"><input type="text" id="ly3_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="ly3_t" data-sum-of="ly3_b ly3_g">০</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium text-slate-900 border-r">৪র্থ শ্রেণি</td>
+                                        <td class="p-1 border-r"><input type="text" id="ly4_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="p-1 border-r"><input type="text" id="ly4_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="ly4_t" data-sum-of="ly4_b ly4_g">০</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium text-slate-900 border-r">৫ম শ্রেণি</td>
+                                        <td class="p-1 border-r"><input type="text" id="ly5_b" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="p-1 border-r"><input type="text" id="ly5_g" inputmode="decimal" data-bn-digits autocomplete="off" placeholder="০" class="w-full text-center p-1 border rounded"></td>
+                                        <td class="px-2 py-2 font-bold text-slate-800 bg-slate-50"><span id="ly5_t" data-sum-of="ly5_b ly5_g">০</span></td>
+                                    </tr>
+                                    <tr class="bg-emerald-50 font-bold text-slate-900 border-t-2 border-emerald-600">
+                                        <td class="px-4 py-2 border-r">মোট</td>
+                                        <td class="px-2 py-2 border-r"><span id="lyt_b" data-sum-of="ly3_b ly4_b ly5_b">০</span></td>
+                                        <td class="px-2 py-2 border-r"><span id="lyt_g" data-sum-of="ly3_g ly4_g ly5_g">০</span></td>
+                                        <td class="px-2 py-2"><span id="lyt_t" data-sum-of="ly3_b ly4_b ly5_b ly3_g ly4_g ly5_g">০</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+<!-- প্রিন্ট বাটন -->
+                <!-- বাটনসমূহ (একই লাইনে ডানে সাজানো) -->
+<div class="flex flex-wrap items-center justify-end gap-3 no-print pt-6 mt-4 border-t border-slate-200">
+    <button onclick="saveGlanceData()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+        <i class="fas fa-save"></i> তথ্যটি সংরক্ষণ করুন
+    </button>
+    <button onclick="window.print()" class="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+        <i class="fas fa-print"></i> ছকটি প্রিন্ট করুন
+    </button>
+</div>
+                
+
+            </div>
+            </div><!-- /glance-sub-chart -->
+
+            <!-- সাব-মেন্যু: সর্বশেষ বিদ্যালয় পরিদর্শন -->
+            <div id="glance-sub-visit" class="hidden no-print">
+                <div class="max-w-xl bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="bg-gradient-to-r from-emerald-700 to-teal-700 text-white px-6 py-5 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center text-2xl text-amber-300 shrink-0"><i class="fas fa-calendar-check"></i></div>
+                        <div>
+                            <h3 class="text-lg font-bold">সর্বশেষ বিদ্যালয় পরিদর্শন</h3>
+                            <p class="text-xs text-emerald-100">সর্বশেষ পরিদর্শনের তারিখ এখানে সংরক্ষণ ও পরিবর্তন করুন</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <!-- দেখার অবস্থা -->
+                        <div id="visitView" class="text-center space-y-3">
+                            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">সর্বশেষ পরিদর্শনের তারিখ</p>
+                            <p id="visitDateText" class="text-3xl font-bold text-emerald-800"></p>
+                            <p id="visitAgoText" class="text-sm text-slate-500"></p>
+                            <div class="mt-3 pt-4 border-t border-slate-100 space-y-1">
+                                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide">পরিদর্শনকারী কর্মকর্তা</p>
+                                <p id="visitOfficerText" class="text-lg font-bold text-slate-800"></p>
+                                <p id="visitDesigText" class="text-sm text-slate-600"></p>
+                                <p id="visitLocText" class="text-sm"></p>
+                            </div>
+                            <button type="button" onclick="editVisit()" class="mt-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold rounded-xl shadow transition-all inline-flex items-center gap-2">
+                                <i class="fas fa-edit"></i> সম্পাদনা করুন
+                            </button>
+                        </div>
+
+                        <!-- সম্পাদনার অবস্থা -->
+                        <form id="visitForm" onsubmit="saveVisit(event)" class="hidden space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">পরিদর্শনের তারিখ</label>
+                                <input type="date" name="visitDate" required class="w-full px-3 py-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">পরিদর্শনকারী অফিসারের নাম</label>
+                                <input type="text" name="visitOfficer" maxlength="80" placeholder="অফিসারের নাম লিখুন" class="w-full px-3 py-2.5 border rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <label class="block text-xs font-bold text-slate-700">পদবি</label>
+                                    <button type="button" onclick="openDesigModal()" class="text-xs font-semibold text-brand-700 hover:underline"><i class="fas fa-pen"></i> অপশন সম্পাদনা</button>
+                                </div>
+                                <select name="visitDesig" data-desig-select class="w-full px-3 py-2.5 border rounded-xl text-sm bg-white focus:ring-2 focus:ring-brand-500 outline-none"></select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">পরিদর্শনের অবস্থান (জিপিএস)</label>
+                                <div class="flex flex-wrap items-center gap-2 text-sm">
+                                    <button type="button" id="visitLocBtn" onclick="captureVisitLoc()" class="px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded-xl text-xs font-bold disabled:opacity-50"><i class="fas fa-crosshairs"></i> বর্তমান অবস্থান যোগ করুন</button>
+                                    <span id="visitLocForm"></span>
+                                    <button type="button" id="visitLocClear" onclick="clearVisitLoc()" class="hidden text-xs text-red-500 hover:underline">সরান</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="button" id="visitCancelBtn" onclick="cancelVisitEdit()" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-sm font-medium">বাতিল</button>
+                                <button type="submit" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold flex items-center gap-2"><i class="fas fa-save"></i> সংরক্ষণ করুন</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <!-- সাব-মেন্যু: ঊর্ধ্বতন কর্মকর্তা -->
+            <div id="glance-sub-officers" class="hidden">
+                <div class="space-y-4 p-4 md:p-6 bg-white rounded-2xl shadow-sm border border-slate-200 printable-area">
+                    <h3 class="text-lg md:text-xl font-bold text-slate-800 underline underline-offset-4 decoration-2">ঊর্ধ্বতন কর্মকর্তাঃ</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[560px] border-collapse border border-slate-800 text-center text-sm md:text-base text-slate-900">
+                            <thead>
+                                <tr><th colspan="3" class="border border-slate-800 p-2 font-medium">কর্মকর্তাগণের নাম, পদবী ও যোগাযোগ নম্বর</th></tr>
+                                <tr>
+                                    <th class="border border-slate-800 p-2 font-medium w-1/3">পদবী</th>
+                                    <th class="border border-slate-800 p-2 font-medium w-1/3">নাম</th>
+                                    <th class="border border-slate-800 p-2 font-medium w-1/3">যোগাযোগ নম্বর</th>
+                                </tr>
+                            </thead>
+                            <tbody id="officersBody"></tbody>
+                        </table>
+                    </div>
+                    <p class="no-print text-xs text-slate-400">পদবী স্থির থাকবে। শুধু নাম ও যোগাযোগ নম্বর লিখুন, লেখা নিজে থেকেই সংরক্ষিত হয়।</p>
+                    <div class="flex flex-wrap items-center justify-end gap-3 no-print pt-4 border-t border-slate-200">
+                        <button onclick="saveOfficers()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                            <i class="fas fa-save"></i> তথ্যটি সংরক্ষণ করুন
+                        </button>
+                        <button onclick="window.print()" class="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl shadow-md transition-all flex items-center gap-2">
+                            <i class="fas fa-print"></i> টেবিলটি প্রিন্ট করুন
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+ <!-- DESIGNATION OPTIONS MODAL -->
+    <div id="desigModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/50 backdrop-blur-sm no-print">
+        <div class="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-2xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fas fa-user-tie text-brand-600"></i> পদবির অপশন সম্পাদনা</h3>
+                <button type="button" onclick="closeDesigModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold" aria-label="বন্ধ করুন">&times;</button>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">প্রতিটি অপশনের লেখা বদলাতে পারবেন, মুছতে পারবেন বা নতুন যোগ করতে পারবেন।</p>
+            <div id="desigList" class="space-y-2 overflow-y-auto pr-1 flex-1"></div>
+            <button type="button" onclick="addDesigRow('')" class="mt-3 w-full py-2 border-2 border-dashed border-slate-300 hover:border-brand-500 text-slate-600 hover:text-brand-700 rounded-xl text-sm font-semibold"><i class="fas fa-plus"></i> নতুন অপশন যোগ করুন</button>
+            <div class="flex flex-wrap justify-between gap-2 border-t pt-4 mt-4">
+                <button type="button" onclick="resetDesigOptions()" class="px-3 py-2 text-xs text-slate-500 hover:text-red-600">প্রথম অবস্থায় ফিরুন</button>
+                <div class="flex gap-2">
+                    <button type="button" onclick="closeDesigModal()" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-sm font-medium">বাতিল</button>
+                    <button type="button" onclick="saveDesigOptions()" class="px-5 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold"><i class="fas fa-save"></i> সংরক্ষণ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ <!-- PHOTO LIGHTBOX -->
+    <div id="photoLightbox" class="fixed inset-0 z-[60] hidden flex-col bg-black/95 no-print" onclick="if(event.target===this) closeLightbox()">
+        <div class="flex items-center justify-between px-4 py-3 text-white">
+            <span id="lightboxCounter" class="text-sm font-medium text-slate-300"></span>
+            <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-xl" aria-label="বন্ধ করুন">&times;</button>
+        </div>
+        <div class="flex-1 min-h-0 flex items-center justify-between gap-2 px-2 sm:px-6" onclick="if(event.target===this) closeLightbox()">
+            <button onclick="stepLightbox(-1)" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full bg-white/10 hover:bg-white/20 text-white" aria-label="আগের ছবি"><i class="fas fa-chevron-left"></i></button>
+            <img id="lightboxImg" alt="" class="max-h-full max-w-full object-contain rounded-lg shadow-2xl">
+            <button onclick="stepLightbox(1)" class="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full bg-white/10 hover:bg-white/20 text-white" aria-label="পরের ছবি"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="px-4 py-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 max-w-3xl w-full mx-auto">
+            <input id="lightboxCaption" type="text" maxlength="120" placeholder="ছবির শিরোনাম লিখুন (ঐচ্ছিক)" onchange="saveCaption(this.value)" class="flex-1 px-4 py-2.5 rounded-xl bg-white/10 text-white placeholder-slate-400 text-sm outline-none focus:ring-2 focus:ring-amber-400">
+            <div class="flex items-center justify-between gap-3">
+                <span id="lightboxDate" class="text-xs text-slate-400"></span>
+                <button onclick="deleteCurrentPhoto()" class="px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold flex items-center gap-2"><i class="fas fa-trash"></i> মুছুন</button>
+            </div>
+        </div>
+    </div>
+
+ <!-- LESSON PLAN MODAL -->
+    <div id="lessonModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden no-print">
+        <div class="bg-white rounded-2xl p-6 max-w-lg w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fas fa-book-open text-brand-600"></i> নতুন পাঠটিকা যুক্ত করুন</h3>
+                <button onclick="closeLessonModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold">&times;</button>
+            </div>
+            <form id="lessonForm" onsubmit="saveLessonPlan(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">তারিখ</label>
+                    <input type="date" id="lessonDate" required class="w-full px-3 py-2 border rounded-xl text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">শ্রেণি</label>
+                        <select id="lessonClass" required class="w-full px-3 py-2 border rounded-xl text-sm">
+                            <option value="১ম শ্রেণি">১ম শ্রেণি</option>
+                            <option value="২য় শ্রেণি">২য় শ্রেণি</option>
+                            <option value="৩য় শ্রেণি">৩য় শ্রেণি</option>
+                            <option value="৪র্থ শ্রেণি">৪র্থ শ্রেণি</option>
+                            <option value="৫ম শ্রেণি">৫ম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">বিষয়</label>
+                        <input type="text" id="lessonSubject" placeholder="বাংলা / গণিত" required class="w-full px-3 py-2 border rounded-xl text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">পাঠের শিরোনাম / অধ্যায়</label>
+                    <input type="text" id="lessonTitle" placeholder="অধ্যায়ের নাম" required class="w-full px-3 py-2 border rounded-xl text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">শিখনফল ও মূল বিষয়বস্তু</label>
+                    <textarea id="lessonDetails" rows="3" placeholder="পাঠের শিখনফল লিখুন..." required class="w-full px-3 py-2 border rounded-xl text-sm"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">শিক্ষকের নাম</label>
+                    <input type="text" id="teacherName" value="তোফায়েল তোরাব" required class="w-full px-3 py-2 border rounded-xl text-sm">
+                </div>
+                <div class="flex justify-end gap-2 border-t pt-4">
+                    <button type="button" onclick="closeLessonModal()" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-xl text-sm font-medium">বাতিল</button>
+                    <button type="submit" class="px-5 py-2 bg-brand-600 text-white rounded-xl text-sm font-bold">সংরক্ষণ করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- STUDENT MODAL -->
+    <div id="studentModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden no-print">
+        <div class="bg-white rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl relative">
+            <h3 class="text-lg font-bold text-slate-800 mb-4"><i class="fas fa-user-plus text-brand-600"></i> নতুন শিক্ষার্থী যোগ করুন</h3>
+            <form id="studentForm" onsubmit="saveStudent(event)" class="space-y-3">
+                <input type="text" id="stName" placeholder="শিক্ষার্থীর নাম" required class="w-full p-2 border rounded-xl text-sm">
+                <select id="stClass" class="w-full p-2 border rounded-xl text-sm">
+                    <option value="১ম শ্রেণি">১ম শ্রেণি</option><option value="২য় শ্রেণি">২য় শ্রেণি</option><option value="৩য় শ্রেণি">৩য় শ্রেণি</option><option value="৪র্থ শ্রেণি">৪র্থ শ্রেণি</option><option value="৫ম শ্রেণি">৫ম শ্রেণি</option>
+                </select>
+                <input type="text" id="stRoll" placeholder="রোল নম্বর" required class="w-full p-2 border rounded-xl text-sm">
+                <input type="text" id="stGuardian" placeholder="অভিভাবকের মোবাইল" required class="w-full p-2 border rounded-xl text-sm">
+                <div class="flex justify-end gap-2 border-t pt-3">
+                    <button type="button" onclick="closeStudentModal()" class="px-4 py-2 bg-slate-100 rounded-xl text-sm">বাতিল</button>
+                    <button type="submit" class="px-4 py-2 bg-brand-600 text-white font-bold rounded-xl text-sm">সেভ করুন</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-slate-900 via-brand-950 to-emerald-950 text-slate-300 py-6 border-t border-emerald-500/20 mt-auto shadow-2xl relative overflow-hidden no-print shrink-0">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10 text-xs">
+            <p class="text-slate-400 font-medium tracking-wide">
+                © ২০২৬ <span class="text-emerald-400 font-semibold">নখাপাড়া সরকারি প্রাথমিক বিদ্যালয়</span>। সর্বস্বত্ব সংরক্ষিত।
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 shadow-lg text-slate-200">
+                <span class="text-amber-300 font-medium"><i class="fas fa-code"></i> কারিগরি সহায়তায় ও সাইট ডেভেলপার:</span>
+                <strong class="text-white font-bold tracking-wide">তোফায়েল তোরাব</strong>
+                <span class="text-slate-500">|</span>
+                <span class="text-emerald-200">সহকারী শিক্ষক, নখাপাড়া সপ্রাবি</span>
+                <span class="text-slate-500">|</span>
+                <a href="mailto:tt.physics9899@gmail.com" class="text-amber-300 hover:underline"><i class="fas fa-envelope"></i> tt.physics9899@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App Scripts -->
+    <script>
+        let lessonPlans = JSON.parse(localStorage.getItem('lessonPlans')) || [];
+        let students = JSON.parse(localStorage.getItem('students')) || [
+            { id: 1, name: 'আব্দুল্লাহ', className: '৫ম শ্রেণি', roll: '০১', phone: '০১৭০০০০০০০১' },
+            { id: 2, name: 'ফাতেমা খাতুন', className: '৫ম শ্রেণি', roll: '০২', phone: '০১৭০০০০০০০২' }
+        ];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-50', 'text-brand-700', 'border', 'border-brand-200', 'shadow-sm', 'font-semibold');
+                btn.classList.add('text-slate-600', 'font-medium');
+            });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn) activeBtn.classList.add('bg-brand-50', 'text-brand-700', 'border', 'border-brand-200', 'shadow-sm', 'font-semibold');
+            if (tabId === 'gallery') renderGallery();
+            if (tabId === 'evaluation') renderEval();
+            if (tabId === 'gps') renderGps();
+        }
+
+        // Lesson Plan Modals
+        function openLessonModal() {
+            document.getElementById('lessonModal').classList.remove('hidden');
+            document.getElementById('lessonDate').valueAsDate = new Date();
+        }
+        function closeLessonModal() { document.getElementById('lessonModal').classList.add('hidden'); }
+        
+        function saveLessonPlan(e) {
+            e.preventDefault();
+            const newPlan = {
+                id: Date.now(),
+                date: document.getElementById('lessonDate').value,
+                className: document.getElementById('lessonClass').value,
+                subject: document.getElementById('lessonSubject').value,
+                title: document.getElementById('lessonTitle').value,
+                details: document.getElementById('lessonDetails').value,
+                teacher: document.getElementById('teacherName').value
+            };
+            lessonPlans.unshift(newPlan);
+            localStorage.setItem('lessonPlans', JSON.stringify(lessonPlans));
+            closeLessonModal();
+            renderLessonPlans();
+            updateStats();
+        }
+
+        function renderLessonPlans() {
+            const filterClass = document.getElementById('filterLessonClass').value;
+            const container = document.getElementById('lessonPlanList');
+            container.innerHTML = '';
+
+            const filteredPlans = filterClass ? lessonPlans.filter(p => p.className === filterClass) : lessonPlans;
+
+            if (filteredPlans.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-10 bg-white rounded-2xl border text-slate-400">কোনো পাঠটিকা তথ্য পাওয়া যায়নি।</div>`;
+                return;
+            }
+
+            filteredPlans.forEach(plan => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative";
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-lg text-xs">${escapeHtml(plan.className)}</span>
+                        <span class="text-xs text-slate-400 font-medium">${escapeHtml(plan.date ? formatBnDate(plan.date) : '')}</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base mb-1">${escapeHtml(plan.title)}</h4>
+                    <p class="text-xs font-semibold text-brand-700 mb-2">বিষয়: ${escapeHtml(plan.subject)}</p>
+                    <p class="text-xs text-slate-600 bg-slate-50 p-3 rounded-xl mb-3" style="white-space:pre-line">${escapeHtml(plan.details)}</p>
+                    <div class="text-xs text-slate-500 border-t pt-2 flex justify-between items-center">
+                        <span>শিক্ষক: ${escapeHtml(plan.teacher)}</span>
+                        <button onclick="deleteLesson(${Number(plan.id)})" class="text-red-500" title="মুছুন"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function deleteLesson(id) {
+            if (!confirm('এই পাঠটিকাটি মুছে ফেলতে চান?')) return;
+            lessonPlans = lessonPlans.filter(p => p.id !== id);
+            localStorage.setItem('lessonPlans', JSON.stringify(lessonPlans));
+            renderLessonPlans();
+            updateStats();
+        }
+
+        // Student Handlers
+        function openStudentModal() { document.getElementById('studentModal').classList.remove('hidden'); }
+        function closeStudentModal() { document.getElementById('studentModal').classList.add('hidden'); }
+        
+        function saveStudent(e) {
+            e.preventDefault();
+            const st = {
+                id: Date.now(),
+                name: document.getElementById('stName').value,
+                className: document.getElementById('stClass').value,
+                roll: document.getElementById('stRoll').value,
+                phone: document.getElementById('stGuardian').value
+            };
+            students.push(st);
+            localStorage.setItem('students', JSON.stringify(students));
+            closeStudentModal();
+            renderStudents();
+            updateStats();
+        }
+
+        function renderStudents() {
+            const container = document.getElementById('studentList');
+            container.innerHTML = '';
+            const geoMap = studentGeoMap();
+            students.forEach(st => {
+                const g = geoMap[String(st.id)];
+                const geoHtml = validGeo(g)
+                    ? '<a href="' + mapUrl(g.lat, g.lng) + '" target="_blank" rel="noopener" class="text-xs text-blue-600 hover:underline" title="বাড়ির অবস্থান দেখুন"><i class="fas fa-location-dot"></i> বাড়ি</a>' +
+                      '<button onclick="setStudentGeo(' + Number(st.id) + ')" class="text-xs text-slate-400 hover:text-blue-600" title="অবস্থান হালনাগাদ করুন"><i class="fas fa-rotate"></i></button>'
+                    : '<button onclick="setStudentGeo(' + Number(st.id) + ')" class="text-xs text-blue-600 hover:underline" title="বাড়ির অবস্থান যোগ করুন"><i class="fas fa-location-crosshairs"></i> অবস্থান</button>';
+                const card = document.createElement('div');
+                card.className = "bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between";
+                card.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-800">${escapeHtml(st.name)}</h4>
+                        <p class="text-xs text-slate-500">${escapeHtml(st.className)} | রোল: ${escapeHtml(st.roll)}</p>
+                        <p class="text-xs text-emerald-700"><i class="fas fa-phone text-xs"></i> ${escapeHtml(st.phone)}</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-2">
+                        <button onclick="deleteStudent(${Number(st.id)})" class="text-red-400 hover:text-red-600 text-xs" title="মুছুন"><i class="fas fa-trash"></i></button>
+                        <div class="flex items-center gap-2">${geoHtml}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function deleteStudent(id) {
+            if (!confirm('এই শিক্ষার্থীর তথ্য মুছে ফেলতে চান?')) return;
+            students = students.filter(s => s.id !== id);
+            localStorage.setItem('students', JSON.stringify(students));
+            cleanEvalFor(id);
+            cleanStudentGeo(id);
+            renderStudents();
+            renderEval();
+            updateStats();
+        }
+
+        // Certificate Generator
+        function generateCert(e) {
+            e.preventDefault();
+            const type = document.getElementById('certType').value;
+            const v = id => escapeHtml(document.getElementById(id).value.trim());
+            const name = '<strong class="text-slate-900 font-bold">' + v('certName') + '</strong>';
+            const who = name + ', পিতা: ' + v('certFather') + ', মাতা: ' + v('certMother');
+            const cls = '<strong>' + v('certClass') + '</strong>';
+            const roll = v('certRoll');
+            let body;
+            if (type === 'প্রশংসা পত্র') {
+                body = 'এই মর্মে প্রশংসা জ্ঞাপন করা যাচ্ছে যে, ' + who + ', এই বিদ্যালয়ের ' + cls + '-এর একজন নিয়মিত শিক্ষার্থী (রোল নম্বর ' + roll + ')। পড়াশোনা ও আচার-আচরণে সে প্রশংসনীয় মান প্রদর্শন করেছে। আমরা তার সাফল্য ও উজ্জ্বল ভবিষ্যৎ কামনা করি।';
+            } else if (type === 'ছাড়পত্র (TC)') {
+                body = 'এই মর্মে ছাড়পত্র প্রদান করা যাচ্ছে যে, ' + who + ', এই বিদ্যালয়ের ' + cls + '-এ অধ্যয়নরত ছিল (রোল নম্বর ' + roll + ')। বিদ্যালয়ের নিকট তার কোনো পাওনা বা অভিযোগ নেই। তাকে অন্য বিদ্যালয়ে ভর্তির জন্য এই ছাড়পত্র প্রদান করা হলো।';
+            } else {
+                body = 'এই মর্মে প্রত্যয়ন করা যাচ্ছে যে, ' + who + ', এই বিদ্যালয়ের ' + cls + '-এর একজন নিয়মিত শিক্ষার্থী ছিল। তার রোল নম্বর ' + roll + '। আমার জানামতে সে সৎ ও ভালো চরিত্রের অধিকারী।';
+            }
+            document.getElementById('prevCertType').textContent = type;
+            document.getElementById('prevBody').innerHTML = body;
+            const t = new Date();
+            document.getElementById('prevDate').textContent = toBn(String(t.getDate()).padStart(2, '0') + '/' + String(t.getMonth() + 1).padStart(2, '0') + '/' + t.getFullYear());
+            document.getElementById('certificatePreview').classList.remove('hidden');
+        }
+
+        // Stats Update
+        function updateStats() {
+            document.getElementById('statTotalStudents').innerText = toBn(students.length);
+            document.getElementById('statTotalLessons').innerText = toBn(lessonPlans.length);
+        }
+
+        // ===================== এক নজরে: সেভ, লোড ও মোট হিসাব =====================
+        const GLANCE_KEY = 'nakhapara_glance_data';
+        const OFFICERS_KEY = 'nakhapara_senior_officers';
+        const OFFICER_POSTS = [
+            'মহাপরিচালক, প্রাথমিক শিক্ষা অধিদপ্তর',
+            'উপপরিচালক, প্রাথমিক শিক্ষা, রংপুর অঞ্চল',
+            'জেলা প্রাথমিক শিক্ষা অফিসার',
+            'উপজেলা প্রাথমিক শিক্ষা অফিসার',
+            'সহকারী উপজেলা প্রাথমিক শিক্ষা অফিসার'
+        ];
+
+        function readJson(key) { try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+        function bnToEn(s) { return String(s == null ? '' : s).replace(/[০-৯]/g, d => '০১২৩৪৫৬৭৮৯'.indexOf(d)); }
+        function num(v) { const n = parseFloat(bnToEn(v).trim()); return isNaN(n) ? 0 : n; }
+        function fmtBn(n) { return toBn(Number.isInteger(n) ? n : Math.round(n * 100) / 100); }
+
+        // data-sum-of="id1 id2 ..." যুক্ত প্রতিটি ঘরে ওই ঘরগুলোর যোগফল বসায়
+        function recalcGlance() {
+            document.querySelectorAll('#glance-sub-chart [data-sum-of]').forEach(el => {
+                let s = 0;
+                el.getAttribute('data-sum-of').split(/\s+/).forEach(id => { const i = id && document.getElementById(id); if (i) s += num(i.value); });
+                el.textContent = fmtBn(s);
+            });
+        }
+
+        const GLANCE_FIELDS = '#glance-sub-chart input[id], #glance-sub-chart textarea[id]';
+        function collectGlance() {
+            const d = {};
+            document.querySelectorAll(GLANCE_FIELDS).forEach(el => { d[el.id] = el.value; });
+            return d;
+        }
+        function saveGlanceData(silent) {
+            try { localStorage.setItem(GLANCE_KEY, JSON.stringify(collectGlance())); }
+            catch (e) { if (silent !== true) alert('তথ্য সংরক্ষণ করা যায়নি। ব্রাউজারের স্টোরেজ বন্ধ বা পূর্ণ থাকতে পারে।'); return false; }
+            if (silent !== true) alert('তথ্য সফলভাবে সংরক্ষণ করা হয়েছে!');
+            return true;
+        }
+        function loadGlanceData() {
+            const d = readJson(GLANCE_KEY);
+            if (d && typeof d === 'object') {
+                Object.keys(d).forEach(id => { const el = document.getElementById(id); if (el && 'value' in el) el.value = d[id]; });
+            }
+            recalcGlance();
+        }
+
+        // ---- ঊর্ধ্বতন কর্মকর্তা ----
+        function renderOfficers() {
+            const tb = document.getElementById('officersBody');
+            if (!tb) return;
+            tb.innerHTML = '';
+            const cell = 'w-full min-h-[3.5rem] px-2 py-2 text-center bg-transparent outline-none focus:bg-emerald-50 placeholder:text-slate-300 print:placeholder-transparent';
+            OFFICER_POSTS.forEach((post, i) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td class="border border-slate-800 p-2 align-middle">' + escapeHtml(post) + '</td>' +
+                    '<td class="border border-slate-800 p-0"><input type="text" id="off_name_' + i + '" maxlength="80" placeholder="নাম লিখুন" class="' + cell + '"></td>' +
+                    '<td class="border border-slate-800 p-0"><input type="tel" inputmode="tel" data-bn-keep id="off_phone_' + i + '" maxlength="30" placeholder="মোবাইল নম্বর" class="' + cell + '"></td>';
+                tb.appendChild(tr);
+            });
+        }
+        function collectOfficers() {
+            return OFFICER_POSTS.map((post, i) => ({
+                post,
+                name: (document.getElementById('off_name_' + i) || {}).value || '',
+                phone: (document.getElementById('off_phone_' + i) || {}).value || ''
+            }));
+        }
+        function saveOfficers(silent) {
+            try { localStorage.setItem(OFFICERS_KEY, JSON.stringify(collectOfficers())); }
+            catch (e) { if (silent !== true) alert('তথ্য সংরক্ষণ করা যায়নি। ব্রাউজারের স্টোরেজ বন্ধ বা পূর্ণ থাকতে পারে।'); return false; }
+            if (silent !== true) alert('ঊর্ধ্বতন কর্মকর্তাদের তথ্য সংরক্ষণ করা হয়েছে!');
+            return true;
+        }
+        function loadOfficers() {
+            const d = readJson(OFFICERS_KEY);
+            if (!Array.isArray(d)) return;
+            // পদবি স্থির; নাম ও নম্বর পদবির ক্রম অনুযায়ী বসে
+            OFFICER_POSTS.forEach((post, i) => {
+                const rec = d.find(x => x && x.post === post) || d[i] || {};
+                const n = document.getElementById('off_name_' + i), p = document.getElementById('off_phone_' + i);
+                if (n) n.value = rec.name || '';
+                if (p) p.value = rec.phone || '';
+            });
+        }
+
+        // ---- অটোসেভ: লেখা থামার ০.৬ সেকেন্ড পর নিজে থেকে সংরক্ষণ ----
+        const saveTimers = {};
+        function runSave(kind) { return kind === 'glance' ? saveGlanceData(true) : saveOfficers(true); }
+        function scheduleSave(kind) {
+            clearTimeout(saveTimers[kind]);
+            saveTimers[kind] = setTimeout(() => { delete saveTimers[kind]; runSave(kind); }, 600);
+        }
+        function flushPendingSaves() {
+            Object.keys(saveTimers).forEach(k => { clearTimeout(saveTimers[k]); delete saveTimers[k]; runSave(k); });
+        }
+
+        // ===================== ব্যাকআপ ও রিকভারি =====================
+        function showBackupStatus(msg, type) {
+            const el = document.getElementById('backupStatus');
+            const styles = { info: 'bg-blue-50 text-blue-800 border border-blue-200', ok: 'bg-emerald-50 text-emerald-800 border border-emerald-200', error: 'bg-red-50 text-red-800 border border-red-200' };
+            el.className = 'rounded-xl px-4 py-3 text-sm font-medium ' + (styles[type] || styles.info);
+            el.textContent = msg;
+        }
+        function blobToDataUrl(b) {
+            return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsDataURL(b); });
+        }
+        function dataUrlToBlob(u) {
+            const m = /^data:([a-z0-9.+\/-]+);base64,(.+)$/i.exec(String(u || ''));
+            if (!m) throw new Error('অবৈধ ছবির তথ্য');
+            const bin = atob(m[2]), arr = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+            return new Blob([arr], { type: m[1] });
+        }
+
+        // ছবি: ছোট ছবি (meta) ও বড় ছবি (photos_full) দুটোই নেওয়া হয়; পুরনো সংস্করণের ছবিও চলে
+        async function collectPhotosForBackup() {
+            const out = [];
+            const metas = await getAllPhotos();
+            for (const p of metas) {
+                let thumb = '', full = '';
+                if (typeof p.thumb === 'string') thumb = p.thumb;
+                else if (p.thumb && p.thumb instanceof Blob) thumb = await blobToDataUrl(p.thumb);
+                const rec = await idbGet(FULL_STORE, p.id);
+                if (rec && rec.buf) full = await blobToDataUrl(new Blob([rec.buf], { type: rec.type || 'image/jpeg' }));
+                else if (p.full && p.full instanceof Blob) full = await blobToDataUrl(p.full);
+                out.push({ id: p.id, name: p.name || '', caption: p.caption || '', createdAt: p.createdAt || Date.now(), thumb, full });
+            }
+            return out;
+        }
+
+        async function exportData() {
+            const btn = document.getElementById('backupExportBtn');
+            if (btn) btn.disabled = true;
+            showBackupStatus('ব্যাকআপ তৈরি হচ্ছে... ছবি বেশি হলে একটু সময় লাগতে পারে।', 'info');
+            try {
+                flushPendingSaves();
+                let photos = [], photoNote = '';
+                try { photos = await collectPhotosForBackup(); }
+                catch (e) { photoNote = ' (ছবি ব্যাকআপে নেওয়া যায়নি: ' + ((e && e.message) || e) + ')'; }
+                let desigOptions = null;
+                try { desigOptions = JSON.parse(lsGet(DESIG_OPTS_KEY) || 'null'); } catch (e) {}
+                const payload = {
+                    app: 'nakhapara-school', version: 2, exportedAt: new Date().toISOString(),
+                    lessonPlans, students,
+                    glance: readJson(GLANCE_KEY),
+                    officers: readJson(OFFICERS_KEY),
+                    evaluation: readJson(EVAL_KEY),
+                    attendance: attList(),
+                    geo: { school: readJson(SCHOOL_GEO_KEY), students: readJson(STUDENT_GEO_KEY), visit: readJson(VISIT_LOC_KEY) },
+                    visit: { date: getVisitDate(), officer: getOfficer(), desig: getDesig(), desigOptions },
+                    photos
+                };
+                const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                const t = new Date();
+                a.href = url;
+                a.download = 'nakhapara_school_backup_' + t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0') + '.json';
+                document.body.appendChild(a); a.click(); a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 5000);
+                showBackupStatus('ব্যাকআপ ফাইল ডাউনলোড হয়েছে (ছবি: ' + toBn(photos.length) + 'টি)।' + photoNote, photoNote ? 'error' : 'ok');
+            } catch (err) {
+                showBackupStatus('ব্যাকআপ তৈরি করা যায়নি: ' + ((err && err.message) || err), 'error');
+            } finally { if (btn) btn.disabled = false; }
+        }
+
+        function cleanRecords(arr, fields) {
+            if (!Array.isArray(arr)) return null;
+            return arr.filter(x => x && typeof x === 'object').map((x, i) => {
+                const o = {};
+                fields.forEach(f => { o[f] = x[f] == null ? '' : String(x[f]); });
+                o.id = Number(x.id) || (Date.now() + i);
+                return o;
+            });
+        }
+
+        async function importData(file) {
+            if (!file) return;
+            let d;
+            try { d = JSON.parse(await file.text()); }
+            catch (e) { showBackupStatus('ফাইলটি পড়া যায়নি। এটি এই সিস্টেম থেকে নেওয়া ব্যাকআপ ফাইল (.json) কি না দেখুন।', 'error'); return; }
+            if (!d || typeof d !== 'object' || Array.isArray(d)) { showBackupStatus('এটি সঠিক ব্যাকআপ ফাইল নয়।', 'error'); return; }
+            if (!confirm('ফাইলের তথ্য দিয়ে বর্তমান পাঠটিকা, শিক্ষার্থী, মূল্যায়ন ও এক নজরে ছকের তথ্য প্রতিস্থাপিত হবে। ফাইলের ছবিগুলো গ্যালারিতে যোগ হবে। এগিয়ে যাবেন?')) return;
+            showBackupStatus('তথ্য ফিরিয়ে আনা হচ্ছে...', 'info');
+            let problems = [];
+            try {
+                const lp = cleanRecords(d.lessonPlans, ['date', 'className', 'subject', 'title', 'details', 'teacher']);
+                if (lp) { lessonPlans = lp; localStorage.setItem('lessonPlans', JSON.stringify(lessonPlans)); }
+                const st = cleanRecords(d.students, ['name', 'className', 'roll', 'phone']);
+                if (st) { students = st; localStorage.setItem('students', JSON.stringify(students)); }
+                if (d.glance && typeof d.glance === 'object') {
+                    const g = {}; Object.keys(d.glance).forEach(k => { g[k] = String(d.glance[k]); });
+                    localStorage.setItem(GLANCE_KEY, JSON.stringify(g));
+                }
+                if (Array.isArray(d.officers)) {
+                    localStorage.setItem(OFFICERS_KEY, JSON.stringify(d.officers.filter(x => x && typeof x === 'object').map(x => ({ post: String(x.post || ''), name: String(x.name || ''), phone: String(x.phone || '') }))));
+                }
+                if (d.evaluation && typeof d.evaluation === 'object' && !Array.isArray(d.evaluation)) {
+                    const ev = {};
+                    Object.keys(d.evaluation).forEach(k => {
+                        const r = d.evaluation[k];
+                        if (r && typeof r === 'object') ev[k] = { c: String(r.c == null ? '' : r.c), s: String(r.s == null ? '' : r.s) };
+                    });
+                    localStorage.setItem(EVAL_KEY, JSON.stringify(ev));
+                }
+                const at = cleanRecords(d.attendance, ['date', 'name', 'type', 'time', 'lat', 'lng', 'acc', 'dist']);
+                if (at) localStorage.setItem(ATT_KEY, JSON.stringify(at));
+                if (d.geo && typeof d.geo === 'object') {
+                    if (validGeo(d.geo.school)) localStorage.setItem(SCHOOL_GEO_KEY, JSON.stringify(d.geo.school));
+                    if (d.geo.students && typeof d.geo.students === 'object' && !Array.isArray(d.geo.students)) {
+                        const sm = {}; Object.keys(d.geo.students).forEach(k => { if (validGeo(d.geo.students[k])) sm[k] = d.geo.students[k]; });
+                        localStorage.setItem(STUDENT_GEO_KEY, JSON.stringify(sm));
+                    }
+                    if (validGeo(d.geo.visit)) localStorage.setItem(VISIT_LOC_KEY, JSON.stringify(d.geo.visit));
+                }
+                const v = d.visit;
+                if (v && typeof v === 'object') {
+                    if (v.date) lsSet(VISIT_KEY, String(v.date));
+                    lsSet(OFFICER_KEY, String(v.officer || ''));
+                    lsSet(DESIG_KEY, String(v.desig || ''));
+                    if (Array.isArray(v.desigOptions)) lsSet(DESIG_OPTS_KEY, JSON.stringify(v.desigOptions.filter(x => typeof x === 'string')));
+                }
+            } catch (e) {
+                showBackupStatus('তথ্য ফিরিয়ে আনা যায়নি: ' + ((e && e.message) || e) + ' (ব্রাউজারের স্টোরেজ পূর্ণ থাকতে পারে)', 'error');
+                return;
+            }
+            let photoOk = 0, photoFail = 0;
+            if (Array.isArray(d.photos)) {
+                for (const ph of d.photos) {
+                    try {
+                        if (!ph || !ph.id || !ph.full) throw new Error('অসম্পূর্ণ');
+                        const blob = dataUrlToBlob(ph.full);
+                        const buf = await blobToBuffer(blob);
+                        const id = String(ph.id);
+                        await savePhotoBoth(
+                            { id, name: String(ph.name || 'ছবি'), caption: String(ph.caption || ''), createdAt: Number(ph.createdAt) || Date.now(), thumb: (typeof ph.thumb === 'string' && ph.thumb.indexOf('data:image/') === 0) ? ph.thumb : ph.full },
+                            { id, buf, type: blob.type || 'image/jpeg' });
+                        photoOk++;
+                    } catch (e) { photoFail++; }
+                }
+            }
+            // পর্দা নতুন তথ্য দিয়ে সাজানো
+            document.querySelectorAll(GLANCE_FIELDS).forEach(el => { el.value = ''; });
+            loadGlanceData();
+            renderOfficers(); loadOfficers();
+            renderLessonPlans(); renderStudents(); renderEval(); updateStats();
+            renderVisit(); renderGps();
+            try { await renderGallery(); } catch (e) {}
+            const msg = 'তথ্য সফলভাবে ফিরিয়ে আনা হয়েছে' + (Array.isArray(d.photos) ? ' (ছবি: ' + toBn(photoOk) + 'টি' + (photoFail ? ', ব্যর্থ ' + toBn(photoFail) + 'টি' : '') + ')' : '') + '।';
+            showBackupStatus(msg, photoFail ? 'error' : 'ok');
+        }
+
+        // ===================== এক নজরে: সাব-মেন্যু =====================
+        const GLANCE_SUBS = ['chart', 'visit', 'officers'];
+        function switchGlanceSub(which) {
+            GLANCE_SUBS.forEach(k => {
+                const panel = document.getElementById('glance-sub-' + k);
+                if (panel) panel.classList.toggle('hidden', k !== which);
+                const b = document.getElementById('glanceSubBtn-' + k);
+                if (!b) return;
+                const on = (k === which);
+                b.classList.toggle('bg-brand-600', on);
+                b.classList.toggle('text-white', on);
+                b.classList.toggle('shadow', on);
+                b.classList.toggle('font-semibold', on);
+                b.classList.toggle('text-slate-600', !on);
+                b.classList.toggle('hover:bg-slate-100', !on);
+                b.classList.toggle('font-medium', !on);
+            });
+            if (which === 'visit') renderVisit();
+        }
+
+        // ===================== সর্বশেষ বিদ্যালয় পরিদর্শন =====================
+        const VISIT_KEY = 'nakhapara_last_visit_date';
+        const OFFICER_KEY = 'nakhapara_last_visit_officer';
+        const DESIG_KEY = 'nakhapara_last_visit_desig';
+        const DESIG_OPTS_KEY = 'nakhapara_visit_desig_options';
+        const DEFAULT_DESIGS = [
+            'মহাপরিচালক, প্রাথমিক শিক্ষা অধিদপ্তর',
+            'বিভাগীয় উপপরিচালক, রংপুর অঞ্চল, প্রাথমিক শিক্ষা',
+            'জেলা প্রাথমিক শিক্ষা অফিসার',
+            'উপজেলা প্রাথমিক শিক্ষা অফিসার',
+            'সহকারী উপজেলা প্রাথমিক শিক্ষা অফিসার'
+        ];
+        function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+        function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+        function toBn(n) { return String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]); }
+        function getVisitDate() { return lsGet(VISIT_KEY) || ''; }
+        function getOfficer() { return lsGet(OFFICER_KEY) || ''; }
+        function getDesig() { return lsGet(DESIG_KEY) || ''; }
+        function getDesigOptions() {
+            try {
+                const raw = lsGet(DESIG_OPTS_KEY);
+                if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) return a.filter(x => typeof x === 'string' && x.trim()); }
+            } catch (e) {}
+            return DEFAULT_DESIGS.slice();
+        }
+        function parseIso(iso) { const [y, m, d] = iso.split('-').map(Number); return new Date(y, m - 1, d); }
+        function formatBnDate(iso) {
+            return parseIso(iso).toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+        function daysAgoText(iso) {
+            const t = new Date(); const today = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+            const diff = Math.round((today - parseIso(iso)) / 86400000);
+            if (diff === 0) return 'আজই পরিদর্শন হয়েছে';
+            if (diff === 1) return 'গতকাল';
+            if (diff > 1) return toBn(diff) + ' দিন আগে';
+            if (diff === -1) return 'আগামীকাল';
+            return toBn(-diff) + ' দিন পরে';
+        }
+
+        // সব পদবি-সিলেক্টে অপশন বসায় (সংরক্ষিত নির্বাচন ধরে রাখে)
+        function fillDesigSelects() {
+            const opts = getDesigOptions(), cur = getDesig();
+            const list = (cur && !opts.includes(cur)) ? opts.concat([cur]) : opts;
+            document.querySelectorAll('[data-desig-select]').forEach(sel => {
+                sel.innerHTML = '';
+                const first = document.createElement('option'); first.value = ''; first.textContent = '— পদবি নির্বাচন করুন —'; sel.appendChild(first);
+                list.forEach(o => { const op = document.createElement('option'); op.value = o; op.textContent = o; sel.appendChild(op); });
+                sel.value = cur;
+            });
+        }
+        // ছকের সিলেক্ট বদলালেই সংরক্ষিত হয়
+        function onDesigChange(sel) {
+            lsSet(DESIG_KEY, sel.value);
+            fillDesigSelects();
+            renderVisit(true);
+        }
+
+        function visitSummaryLine() {
+            const parts = [getOfficer(), getDesig()].filter(Boolean);
+            return parts.join(', ');
+        }
+        function renderVisit(keepEditing) {
+            fillDesigSelects();
+            updateVisitLocUI();
+            const iso = getVisitDate(), officer = getOfficer(), desig = getDesig();
+            const view = document.getElementById('visitView');
+            const form = document.getElementById('visitForm');
+            const badge = document.getElementById('glanceVisitBadge');
+            const hasAny = !!(iso || officer || desig);
+            if (hasAny) {
+                badge.classList.remove('hidden');
+                let t = iso ? formatBnDate(iso) : '';
+                const who = visitSummaryLine();
+                if (who) t += (t ? ' — ' : '') + who;
+                document.getElementById('glanceVisitText').textContent = t;
+            } else { badge.classList.add('hidden'); }
+            if (keepEditing === true && !form.classList.contains('hidden')) return;
+            if (iso) {
+                document.getElementById('visitDateText').textContent = formatBnDate(iso);
+                document.getElementById('visitAgoText').textContent = daysAgoText(iso);
+                document.getElementById('visitOfficerText').textContent = officer || 'নাম দেওয়া হয়নি';
+                document.getElementById('visitDesigText').textContent = desig || '';
+                view.classList.remove('hidden');
+                form.classList.add('hidden');
+            } else {
+                view.classList.add('hidden');
+                form.classList.remove('hidden');
+                form.elements['visitDate'].value = '';
+                form.elements['visitOfficer'].value = officer;
+                form.elements['visitDesig'].value = desig;
+                document.getElementById('visitCancelBtn').classList.add('hidden');
+            }
+        }
+        function editVisit() {
+            const form = document.getElementById('visitForm');
+            form.elements['visitDate'].value = getVisitDate();
+            form.elements['visitOfficer'].value = getOfficer();
+            fillDesigSelects();
+            form.elements['visitDesig'].value = getDesig();
+            document.getElementById('visitCancelBtn').classList.remove('hidden');
+            document.getElementById('visitView').classList.add('hidden');
+            pendingVisitLoc = savedVisitLoc();
+            updateVisitLocUI();
+            form.classList.remove('hidden');
+        }
+        function cancelVisitEdit() { document.getElementById('visitForm').classList.add('hidden'); renderVisit(); }
+        function saveVisit(e) {
+            e.preventDefault();
+            const f = document.getElementById('visitForm').elements;
+            if (!f['visitDate'].value) { alert('অনুগ্রহ করে তারিখ নির্বাচন করুন।'); return; }
+            const ok = lsSet(VISIT_KEY, f['visitDate'].value)
+                && lsSet(OFFICER_KEY, f['visitOfficer'].value.trim())
+                && lsSet(DESIG_KEY, f['visitDesig'].value);
+            if (!ok) { alert('তথ্য সংরক্ষণ করা যায়নি। ব্রাউজারের স্টোরেজ বন্ধ থাকতে পারে।'); return; }
+            lsSet(VISIT_LOC_KEY, JSON.stringify(pendingVisitLoc || null));
+            document.getElementById('visitForm').classList.add('hidden');
+            renderVisit();
+        }
+
+        // ---- পদবির অপশন সম্পাদনা ----
+        function addDesigRow(value) {
+            const row = document.createElement('div');
+            row.className = 'flex items-center gap-2';
+            const inp = document.createElement('input');
+            inp.type = 'text'; inp.value = value; inp.maxLength = 120; inp.placeholder = 'পদবি লিখুন';
+            inp.className = 'desig-input flex-1 px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-brand-500 outline-none';
+            const del = document.createElement('button');
+            del.type = 'button'; del.title = 'মুছুন'; del.innerHTML = '<i class="fas fa-trash"></i>';
+            del.className = 'w-9 h-9 shrink-0 rounded-xl bg-red-50 hover:bg-red-100 text-red-500';
+            del.onclick = () => row.remove();
+            row.appendChild(inp); row.appendChild(del);
+            document.getElementById('desigList').appendChild(row);
+            if (!value) inp.focus();
+        }
+        function openDesigModal() {
+            const list = document.getElementById('desigList'); list.innerHTML = '';
+            getDesigOptions().forEach(o => addDesigRow(o));
+            const m = document.getElementById('desigModal'); m.classList.remove('hidden'); m.classList.add('flex');
+        }
+        function closeDesigModal() { const m = document.getElementById('desigModal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+        function saveDesigOptions() {
+            const vals = []; document.querySelectorAll('#desigList .desig-input').forEach(i => { const v = i.value.trim(); if (v && !vals.includes(v)) vals.push(v); });
+            if (!lsSet(DESIG_OPTS_KEY, JSON.stringify(vals))) { alert('সংরক্ষণ করা যায়নি। ব্রাউজারের স্টোরেজ বন্ধ থাকতে পারে।'); return; }
+            if (getDesig() && !vals.includes(getDesig())) lsSet(DESIG_KEY, '');
+            closeDesigModal(); renderVisit(true);
+        }
+        function resetDesigOptions() {
+            if (!confirm('অপশনগুলো প্রথম অবস্থায় ফিরিয়ে নিতে চান? আপনার করা পরিবর্তন মুছে যাবে।')) return;
+            const list = document.getElementById('desigList'); list.innerHTML = '';
+            DEFAULT_DESIGS.forEach(o => addDesigRow(o));
+        }
+
+        // ===================== ফটো গ্যালারি (IndexedDB) =====================
+        // ছোট ছবি (thumb) ও বড় ছবি (full) আলাদা জায়গায় থাকে; দুটোই সাধারণ ডেটা হিসেবে
+        // (লেখা ও ArrayBuffer) রাখা হয়, যাতে পুরনো মোবাইল ব্রাউজারেও ঠিক চলে।
+        const PHOTO_DB = 'nakhapara_gallery', PHOTO_STORE = 'photos', FULL_STORE = 'photos_full';
+        let photoDb = null, galleryItems = [], lightboxIndex = -1, lightboxUrl = null, galleryBusy = false;
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+        function openPhotoDb() {
+            return new Promise((resolve, reject) => {
+                if (photoDb) return resolve(photoDb);
+                if (!window.indexedDB) return reject(new Error('এই ব্রাউজারে ছবি সংরক্ষণের সুবিধা নেই।'));
+                const req = indexedDB.open(PHOTO_DB, 2);
+                req.onupgradeneeded = () => {
+                    const db = req.result;
+                    if (!db.objectStoreNames.contains(PHOTO_STORE)) db.createObjectStore(PHOTO_STORE, { keyPath: 'id' });
+                    if (!db.objectStoreNames.contains(FULL_STORE)) db.createObjectStore(FULL_STORE, { keyPath: 'id' });
+                };
+                req.onsuccess = () => { photoDb = req.result; photoDb.onversionchange = () => { photoDb.close(); photoDb = null; }; resolve(photoDb); };
+                req.onerror = () => reject(req.error || new Error('ডেটাবেস খোলা যায়নি।'));
+                req.onblocked = () => reject(new Error('ডেটাবেস অন্য ট্যাবে ব্যবহৃত হচ্ছে। অন্য ট্যাব বন্ধ করে আবার চেষ্টা করুন।'));
+            });
+        }
+        // লেনদেন সম্পূর্ণ শেষ হলে তবেই সফল ধরা হয় (শুধু অনুরোধ নয়)
+        async function idbRun(stores, mode, fn) {
+            const db = await openPhotoDb();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction(stores, mode);
+                let result;
+                tx.oncomplete = () => resolve(result);
+                tx.onerror = () => reject(tx.error || new Error('সংরক্ষণ ব্যর্থ হয়েছে।'));
+                tx.onabort = () => reject(tx.error || new Error('সংরক্ষণ বাতিল হয়েছে (সম্ভবত ফোনের জায়গা শেষ)।'));
+                try { fn(...stores.map(n => tx.objectStore(n)), v => { result = v; }); } catch (e) { reject(e); try { tx.abort(); } catch (x) {} }
+            });
+        }
+        const idbGet = (store, id) => idbRun([store], 'readonly', (os, out) => { const r = os.get(id); r.onsuccess = () => out(r.result); });
+        async function getAllPhotos() {
+            const all = await idbRun([PHOTO_STORE], 'readonly', (os, out) => { const r = os.getAll(); r.onsuccess = () => out(r.result); });
+            return (all || []).sort((a, b) => b.createdAt - a.createdAt);
+        }
+        const putPhotoMeta = p => idbRun([PHOTO_STORE], 'readwrite', os => { os.put(p); });
+        const savePhotoBoth = (meta, full) => idbRun([PHOTO_STORE, FULL_STORE], 'readwrite', (m, f) => { m.put(meta); f.put(full); });
+        const removePhoto = id => idbRun([PHOTO_STORE, FULL_STORE], 'readwrite', (m, f) => { m.delete(id); f.delete(id); });
+
+        // ছবি পড়া: প্রথমে createImageBitmap (দ্রুত, কম মেমোরি, ছবি ঘুরিয়ে ঠিক করে), না হলে সাধারণ Image
+        async function decodeImage(file, maxSide) {
+            if (window.createImageBitmap) {
+                try {
+                    const probe = await createImageBitmap(file);
+                    const w0 = probe.width, h0 = probe.height;
+                    const scale = Math.min(1, maxSide / Math.max(w0, h0));
+                    if (scale === 1) return { src: probe, w: w0, h: h0, close: () => probe.close && probe.close() };
+                    probe.close && probe.close();
+                    const bmp = await createImageBitmap(file, { resizeWidth: Math.round(w0 * scale), resizeHeight: Math.round(h0 * scale), resizeQuality: 'high' });
+                    return { src: bmp, w: bmp.width, h: bmp.height, close: () => bmp.close && bmp.close() };
+                } catch (e) { /* নিচের পদ্ধতিতে চেষ্টা */ }
+            }
+            const url = URL.createObjectURL(file);
+            try {
+                const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('ছবিটি খোলা যায়নি')); i.src = url; });
+                return { src: img, w: img.naturalWidth, h: img.naturalHeight, close: () => {} };
+            } finally { URL.revokeObjectURL(url); }
+        }
+        function drawScaled(src, w, h, maxSide) {
+            const scale = Math.min(1, maxSide / Math.max(w, h));
+            const cw = Math.max(1, Math.round(w * scale)), ch = Math.max(1, Math.round(h * scale));
+            const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+            const ctx = c.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, cw, ch); ctx.drawImage(src, 0, 0, cw, ch);
+            return c;
+        }
+        const canvasToBlob = (c, q) => new Promise((res, rej) => c.toBlob(b => b ? res(b) : rej(new Error('ছবি রূপান্তর ব্যর্থ')), 'image/jpeg', q));
+        function blobToBuffer(b) {
+            if (b.arrayBuffer) return b.arrayBuffer();
+            return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = () => rej(r.error); r.readAsArrayBuffer(b); });
+        }
+
+        function showGalleryStatus(msg, type) {
+            const el = document.getElementById('galleryStatus');
+            const styles = { info: 'bg-blue-50 text-blue-800 border border-blue-200', ok: 'bg-emerald-50 text-emerald-800 border border-emerald-200', error: 'bg-red-50 text-red-800 border border-red-200' };
+            el.className = 'rounded-xl px-4 py-3 text-sm font-medium ' + (styles[type] || styles.info);
+            el.textContent = msg;
+        }
+        function hideGalleryStatus() { document.getElementById('galleryStatus').className = 'hidden'; }
+        const IMG_EXT = /\.(jpe?g|png|webp|gif|bmp|avif|heic|heif)$/i;
+
+        async function handleGalleryFiles(fileList) {
+            if (galleryBusy) { showGalleryStatus('আগের ছবিগুলো সংরক্ষণ হচ্ছে, একটু অপেক্ষা করুন।', 'info'); return; }
+            const files = Array.from(fileList || []).filter(f => (f.type && f.type.startsWith('image/')) || IMG_EXT.test(f.name || ''));
+            if (!files.length) { showGalleryStatus('শুধু ছবির ফাইল (JPG, PNG ইত্যাদি) দেওয়া যাবে।', 'error'); return; }
+            galleryBusy = true;
+            // ব্রাউজারকে স্থায়ী স্টোরেজ চাওয়া হয়, যাতে জায়গা কমলে ছবি নিজে থেকে মুছে না যায়
+            try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+            let ok = 0, lastError = '';
+            const failedNames = [];
+            for (let i = 0; i < files.length; i++) {
+                showGalleryStatus('ছবি সংরক্ষণ হচ্ছে... (' + toBn(i + 1) + '/' + toBn(files.length) + ')', 'info');
+                let dec = null;
+                try {
+                    dec = await decodeImage(files[i], 1600);
+                    const fullCanvas = drawScaled(dec.src, dec.w, dec.h, 1600);
+                    const thumbCanvas = drawScaled(fullCanvas, fullCanvas.width, fullCanvas.height, 420);
+                    const fullBuf = await blobToBuffer(await canvasToBlob(fullCanvas, 0.82));
+                    const thumb = thumbCanvas.toDataURL('image/jpeg', 0.75);
+                    const id = Date.now() + '-' + i + '-' + Math.floor(Math.random() * 1e6);
+                    await savePhotoBoth({ id, name: files[i].name || 'ছবি', caption: '', createdAt: Date.now() + i, thumb }, { id, buf: fullBuf, type: 'image/jpeg' });
+                    ok++;
+                } catch (err) {
+                    failedNames.push(files[i].name || 'ছবি');
+                    lastError = (err && (err.message || err.name)) ? (err.message || err.name) : String(err);
+                } finally { if (dec && dec.close) dec.close(); }
+            }
+            galleryBusy = false;
+            await renderGallery();
+            const failed = failedNames.length;
+            if (failed) {
+                const heic = failedNames.some(n => /\.(heic|heif)$/i.test(n)) ? ' HEIC ছবি এই ব্রাউজারে খোলে না, ফোনের ক্যামেরা সেটিংসে JPG করে নিন।' : '';
+                showGalleryStatus((ok ? toBn(ok) + 'টি সংরক্ষিত হয়েছে, ' : '') + toBn(failed) + 'টি ছবি সংরক্ষণ করা যায়নি।' + heic + ' (কারণ: ' + lastError + ')', 'error');
+            } else {
+                showGalleryStatus(toBn(ok) + 'টি ছবি সফলভাবে সংরক্ষিত হয়েছে।', 'ok'); setTimeout(hideGalleryStatus, 4000);
+            }
+        }
+
+        async function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            try { galleryItems = await getAllPhotos(); }
+            catch (err) {
+                grid.innerHTML = '<div class="col-span-full text-center py-10 bg-white rounded-2xl border text-red-500 text-sm">ছবি সংরক্ষণের জায়গা খোলা যায়নি: ' + escapeHtml(err && err.message) + '<br>প্রাইভেট/ইনকগনিটো মোড বন্ধ করে চেষ্টা করুন।</div>';
+                return;
+            }
+            document.getElementById('galleryCount').textContent = galleryItems.length ? ('মোট ছবি: ' + toBn(galleryItems.length) + 'টি') : '';
+            if (!galleryItems.length) {
+                grid.innerHTML = '<div class="col-span-full text-center py-14 bg-white rounded-2xl border border-slate-200 text-slate-400"><i class="fas fa-photo-video text-4xl mb-3 text-slate-300"></i><p class="text-sm">এখনও কোনো ছবি সংরক্ষণ করা হয়নি। ওপরের বাটন থেকে প্রথম ছবিটি আপলোড করুন।</p></div>';
+                return;
+            }
+            grid.innerHTML = galleryItems.map((p, i) => {
+                const cap = escapeHtml(p.caption);
+                // নতুন ছবির thumb লেখা (data URL); পুরনো সংস্করণের ছবির জন্য Blob থেকে লিংক
+                let src = '';
+                if (typeof p.thumb === 'string') src = p.thumb;
+                else if (p.thumb && window.Blob && p.thumb instanceof Blob) { src = URL.createObjectURL(p.thumb); }
+                return '<div class="group relative overflow-hidden rounded-2xl bg-slate-200 shadow-sm border border-slate-200 hover:shadow-xl transition-all" style="aspect-ratio:4/3">' +
+                    '<img src="' + src + '" alt="' + cap + '" onclick="openLightbox(' + i + ')" style="width:100%;height:100%;object-fit:cover;display:block" class="cursor-zoom-in transition-transform duration-300 group-hover:scale-105">' +
+                    '<div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 pt-8 text-white text-xs font-medium truncate">' + (cap || '&nbsp;') + '</div>' +
+                    '<button onclick="deletePhotoAt(' + i + ')" title="মুছুন" class="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-600/90 hover:bg-red-700 text-white text-xs shadow opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"><i class="fas fa-trash"></i></button>' +
+                    '</div>';
+            }).join('');
+        }
+
+        async function deletePhotoAt(i) {
+            if (!galleryItems[i]) return;
+            if (!confirm('এই ছবিটি স্থায়ীভাবে মুছে ফেলতে চান?')) return;
+            try { await removePhoto(galleryItems[i].id); } catch (e) { alert('ছবি মোছা যায়নি: ' + (e && e.message)); }
+            await renderGallery();
+        }
+
+        // ---- লাইটবক্স ----
+        function openLightbox(i) { lightboxIndex = i; const lb = document.getElementById('photoLightbox'); lb.classList.remove('hidden'); lb.classList.add('flex'); showLightbox(); }
+        function closeLightbox() {
+            const lb = document.getElementById('photoLightbox'); lb.classList.add('hidden'); lb.classList.remove('flex');
+            if (lightboxUrl) { URL.revokeObjectURL(lightboxUrl); lightboxUrl = null; }
+            document.getElementById('lightboxImg').removeAttribute('src');
+            lightboxIndex = -1;
+        }
+        async function showLightbox() {
+            const p = galleryItems[lightboxIndex]; if (!p) { closeLightbox(); return; }
+            const mine = lightboxIndex;
+            document.getElementById('lightboxCounter').textContent = toBn(lightboxIndex + 1) + ' / ' + toBn(galleryItems.length);
+            document.getElementById('lightboxCaption').value = p.caption || '';
+            document.getElementById('lightboxDate').textContent = new Date(p.createdAt).toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+            const img = document.getElementById('lightboxImg'); img.alt = p.caption || '';
+            // আগে ছোট ছবিটি সঙ্গে সঙ্গে দেখাই, তারপর বড়টি এলে বদলে দিই
+            img.src = (typeof p.thumb === 'string') ? p.thumb : '';
+            try {
+                const rec = await idbGet(FULL_STORE, p.id);
+                if (mine !== lightboxIndex) return;
+                let blob = null;
+                if (rec && rec.buf) blob = new Blob([rec.buf], { type: rec.type || 'image/jpeg' });
+                else if (p.full && window.Blob && p.full instanceof Blob) blob = p.full;
+                if (blob) { if (lightboxUrl) URL.revokeObjectURL(lightboxUrl); lightboxUrl = URL.createObjectURL(blob); img.src = lightboxUrl; }
+            } catch (e) { /* ছোট ছবিটিই থাকবে */ }
+        }
+        function stepLightbox(d) {
+            if (!galleryItems.length) return;
+            lightboxIndex = (lightboxIndex + d + galleryItems.length) % galleryItems.length; showLightbox();
+        }
+        async function saveCaption(value) {
+            const p = galleryItems[lightboxIndex]; if (!p) return;
+            p.caption = value.trim();
+            try { await putPhotoMeta(p); } catch (e) { alert('শিরোনাম সংরক্ষণ করা যায়নি: ' + (e && e.message)); return; }
+            await renderGallery();
+        }
+        async function deleteCurrentPhoto() {
+            const p = galleryItems[lightboxIndex]; if (!p) return;
+            if (!confirm('এই ছবিটি স্থায়ীভাবে মুছে ফেলতে চান?')) return;
+            try { await removePhoto(p.id); } catch (e) { alert('ছবি মোছা যায়নি: ' + (e && e.message)); return; }
+            await renderGallery();
+            if (!galleryItems.length) closeLightbox(); else { lightboxIndex = Math.min(lightboxIndex, galleryItems.length - 1); showLightbox(); }
+        }
+        document.addEventListener('keydown', e => {
+            if (lightboxIndex < 0) return;
+            if (e.target && e.target.id === 'lightboxCaption') { if (e.key === 'Escape') e.target.blur(); return; }
+            if (e.key === 'Escape') closeLightbox();
+            else if (e.key === 'ArrowLeft') stepLightbox(-1);
+            else if (e.key === 'ArrowRight') stepLightbox(1);
+        });
+
+        // ===================== সংখ্যার ঘরে বাংলা অঙ্ক =====================
+        // ইংরেজি অঙ্ক (0-9) টাইপ করলেও নিজে থেকে বাংলা (০-৯) হয়ে যায়।
+        // শুধু অঙ্ক ও দশমিক চিহ্ন (.) রাখা হয়, বাকি অক্ষর বাদ যায়।
+        const EN2BN = { '0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯','٫':'.','।':'.' };
+        function cleanBnDigits(v) {
+            return v.replace(/[0-9٫।]/g, c => EN2BN[c]).replace(/[^০-৯.]/g, '').replace(/(\..*?)\./g, '$1');
+        }
+        document.addEventListener('input', e => {
+            const el = e.target;
+            if (!el || !el.hasAttribute || !el.hasAttribute('data-bn-digits')) return;
+            if (e.isComposing) return;
+            const cleaned = cleanBnDigits(el.value);
+            if (cleaned !== el.value) {
+                const pos = el.selectionStart, diff = el.value.length - cleaned.length;
+                el.value = cleaned;
+                try { el.setSelectionRange(Math.max(0, pos - Math.max(0, diff)), Math.max(0, pos - Math.max(0, diff))); } catch (err) {}
+            }
+        });
+        document.addEventListener('compositionend', e => {
+            const el = e.target;
+            if (el && el.hasAttribute && el.hasAttribute('data-bn-digits')) el.value = cleanBnDigits(el.value);
+        });
+
+        // ===================== জিপিএস: অবস্থান, উপস্থিতি, মানচিত্র =====================
+        const SCHOOL_GEO_KEY = 'nakhapara_school_geo';
+        const STUDENT_GEO_KEY = 'nakhapara_student_geo';
+        const VISIT_LOC_KEY = 'nakhapara_last_visit_loc';
+        const ATT_KEY = 'attendance';
+        const DEFAULT_RADIUS = 200;   // মিটার
+        const MAX_ACCURACY = 200;     // এর চেয়ে কম নির্ভুল অবস্থান উপস্থিতির জন্য নেওয়া হয় না (মিটার)
+        // শিক্ষক বদলালে শুধু এই তালিকা সম্পাদনা করুন
+        const TEACHERS = ['চিত্তরঞ্জন রায়', 'বুবলী রানী ঘোষ', 'তোফায়েল তোরাব', 'রাজেদুন্নাহার', 'হাফিজা খাতুন'];
+        const pad2 = n => String(n).padStart(2, '0');
+
+        function validGeo(g) {
+            return !!g && typeof g === 'object' && isFinite(Number(g.lat)) && isFinite(Number(g.lng)) && g.lat !== null && g.lng !== null &&
+                Math.abs(Number(g.lat)) <= 90 && Math.abs(Number(g.lng)) <= 180;
+        }
+        function schoolGeo() { const g = readJson(SCHOOL_GEO_KEY); return validGeo(g) ? g : null; }
+        function studentGeoMap() { const d = readJson(STUDENT_GEO_KEY); return (d && typeof d === 'object' && !Array.isArray(d)) ? d : {}; }
+        function savedVisitLoc() { const g = readJson(VISIT_LOC_KEY); return validGeo(g) ? g : null; }
+        function attList() { const a = readJson(ATT_KEY); return Array.isArray(a) ? a : []; }
+        function mapUrl(lat, lng) { return 'https://www.google.com/maps?q=' + Number(lat).toFixed(6) + ',' + Number(lng).toFixed(6); }
+        function coordText(g) { return toBn(Number(g.lat).toFixed(5)) + ', ' + toBn(Number(g.lng).toFixed(5)); }
+        function todayStr() { const t = new Date(); return t.getFullYear() + '-' + pad2(t.getMonth() + 1) + '-' + pad2(t.getDate()); }
+        function nowTime() { const t = new Date(); return pad2(t.getHours()) + ':' + pad2(t.getMinutes()); }
+
+        // দুই বিন্দুর দূরত্ব (মিটার), হ্যাভারসাইন সূত্রে
+        function distanceM(lat1, lng1, lat2, lng2) {
+            const R = 6371000, rad = x => x * Math.PI / 180;
+            const dLat = rad(lat2 - lat1), dLng = rad(lng2 - lng1);
+            const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLng / 2) ** 2;
+            return 2 * R * Math.asin(Math.sqrt(a));
+        }
+        function geoErrText(e) {
+            if (!e) return 'অবস্থান পাওয়া যায়নি।';
+            if (e.code === 1) return 'অবস্থানের অনুমতি দেওয়া হয়নি। ব্রাউজারের সেটিংসে এই সাইটকে Location (অবস্থান) অনুমতি দিন, তারপর আবার চেষ্টা করুন।';
+            if (e.code === 2) return 'অবস্থান নির্ণয় করা যাচ্ছে না। ফোনের GPS/লোকেশন চালু আছে কি না দেখুন এবং খোলা জায়গায় গিয়ে চেষ্টা করুন।';
+            if (e.code === 3) return 'অবস্থান পেতে অনেক সময় লাগছে। খোলা জায়গায় গিয়ে আবার চেষ্টা করুন।';
+            return e.message || 'অবস্থান পাওয়া যায়নি।';
+        }
+        function getPosition() {
+            return new Promise((resolve, reject) => {
+                if (!navigator.geolocation) { reject({ message: 'এই ব্রাউজারে অবস্থান জানার সুবিধা নেই।' }); return; }
+                navigator.geolocation.getCurrentPosition(
+                    p => resolve({ lat: p.coords.latitude, lng: p.coords.longitude, acc: Math.round(p.coords.accuracy || 0) }),
+                    e => reject({ message: geoErrText(e) }),
+                    { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 });
+            });
+        }
+        function gpsNote(id, msg, type) {
+            const el = document.getElementById(id); if (!el) return;
+            const styles = { info: 'bg-blue-50 text-blue-800 border border-blue-200', ok: 'bg-emerald-50 text-emerald-800 border border-emerald-200', error: 'bg-red-50 text-red-800 border border-red-200' };
+            el.className = 'rounded-xl px-4 py-3 text-sm font-medium ' + (styles[type] || styles.info);
+            el.textContent = msg;
+        }
+
+        // ---- বিদ্যালয়ের অবস্থান ----
+        function renderGeo() {
+            const info = document.getElementById('schoolGeoInfo');
+            if (!info) return;
+            const g = schoolGeo();
+            const link = document.getElementById('schoolMapLink'), frame = document.getElementById('schoolMapFrame'), r = document.getElementById('geoRadius');
+            if (!g) {
+                info.innerHTML = '<span class="text-amber-700 font-semibold"><i class="fas fa-exclamation-triangle"></i> বিদ্যালয়ের অবস্থান এখনও নির্ধারণ করা হয়নি। এটি না করলে উপস্থিতি নেওয়া যাবে না।</span>';
+                link.classList.add('hidden'); frame.classList.add('hidden'); frame.removeAttribute('src');
+                if (r && document.activeElement !== r) r.value = toBn(DEFAULT_RADIUS);
+                return;
+            }
+            const lat = Number(g.lat), lng = Number(g.lng);
+            info.innerHTML = '<i class="fas fa-location-dot text-brand-600"></i> নির্ধারিত অবস্থান: <strong>' + escapeHtml(coordText(g)) + '</strong>' +
+                (g.acc ? ' <span class="text-xs text-slate-500">(নির্ভুলতা ±' + escapeHtml(toBn(g.acc)) + ' মি.)</span>' : '') +
+                (g.setAt ? '<br><span class="text-xs text-slate-500">নির্ধারণের তারিখ: ' + escapeHtml(new Date(Number(g.setAt)).toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' })) + '</span>' : '');
+            link.href = mapUrl(lat, lng); link.classList.remove('hidden');
+            if (r && document.activeElement !== r) r.value = toBn(Number(g.radius) || DEFAULT_RADIUS);
+            const src = 'https://www.openstreetmap.org/export/embed.html?bbox=' + (lng - 0.004).toFixed(6) + ',' + (lat - 0.003).toFixed(6) + ',' + (lng + 0.004).toFixed(6) + ',' + (lat + 0.003).toFixed(6) + '&layer=mapnik&marker=' + lat.toFixed(6) + ',' + lng.toFixed(6);
+            if (frame.getAttribute('src') !== src) frame.setAttribute('src', src);
+            frame.classList.remove('hidden');
+        }
+        async function saveSchoolGeo() {
+            const btn = document.getElementById('schoolGeoBtn');
+            const old = schoolGeo();
+            if (old && !confirm('বিদ্যালয়ের অবস্থান আগে থেকেই নির্ধারিত আছে। আপনি কি এখন বিদ্যালয়ে আছেন এবং নতুন করে বদলাতে চান?')) return;
+            btn.disabled = true; gpsNote('geoMsg', 'অবস্থান নেওয়া হচ্ছে... (অনুমতি চাইলে "অনুমতি দিন" চাপুন)', 'info');
+            try {
+                const p = await getPosition();
+                if (p.acc > 100 && !confirm('অবস্থানের নির্ভুলতা কম (±' + toBn(p.acc) + ' মিটার)। খোলা জায়গায় গিয়ে আবার চেষ্টা করলে ভালো। তবুও সংরক্ষণ করবেন?')) { gpsNote('geoMsg', 'সংরক্ষণ করা হয়নি।', 'info'); return; }
+                const rec = { lat: Number(p.lat.toFixed(6)), lng: Number(p.lng.toFixed(6)), acc: p.acc, radius: (old && Number(old.radius)) || DEFAULT_RADIUS, setAt: Date.now() };
+                localStorage.setItem(SCHOOL_GEO_KEY, JSON.stringify(rec));
+                renderGeo(); gpsNote('geoMsg', 'বিদ্যালয়ের অবস্থান সংরক্ষিত হয়েছে।', 'ok');
+            } catch (e) { gpsNote('geoMsg', e.message || String(e), 'error'); }
+            finally { btn.disabled = false; }
+        }
+        function saveRadius() {
+            const g = schoolGeo();
+            if (!g) { gpsNote('geoMsg', 'আগে বিদ্যালয়ের অবস্থান নির্ধারণ করুন।', 'error'); return; }
+            const v = Math.round(num(document.getElementById('geoRadius').value));
+            if (!(v >= 50 && v <= 2000)) { gpsNote('geoMsg', 'সীমা ৫০ থেকে ২০০০ মিটারের মধ্যে হতে হবে।', 'error'); return; }
+            g.radius = v;
+            localStorage.setItem(SCHOOL_GEO_KEY, JSON.stringify(g));
+            renderGeo(); gpsNote('geoMsg', 'সীমা ' + toBn(v) + ' মিটার সংরক্ষিত হয়েছে।', 'ok');
+        }
+
+        // ---- শিক্ষকের উপস্থিতি ----
+        async function markAttendance(type) {
+            const name = document.getElementById('gpsTeacher').value;
+            if (!name) { gpsNote('gpsMsg', 'আগে শিক্ষকের নাম বেছে নিন।', 'error'); return; }
+            const sg = schoolGeo();
+            if (!sg) { gpsNote('gpsMsg', 'আগে নিচে "বিদ্যালয়ের অবস্থান" নির্ধারণ করুন।', 'error'); return; }
+            const list = attList(), today = todayStr();
+            const mine = list.filter(r => r.date === today && r.name === name);
+            const hasIn = mine.some(r => r.type === 'in'), hasOut = mine.some(r => r.type === 'out');
+            if (type === 'in' && hasIn) { gpsNote('gpsMsg', name + '-এর আজকের আগমন আগেই নথিভুক্ত আছে।', 'error'); return; }
+            if (type === 'out' && !hasIn) { gpsNote('gpsMsg', 'আগে আগমন নথিভুক্ত করুন।', 'error'); return; }
+            if (type === 'out' && hasOut) { gpsNote('gpsMsg', name + '-এর আজকের প্রস্থান আগেই নথিভুক্ত আছে।', 'error'); return; }
+            const b1 = document.getElementById('attInBtn'), b2 = document.getElementById('attOutBtn');
+            b1.disabled = b2.disabled = true;
+            gpsNote('gpsMsg', 'অবস্থান নেওয়া হচ্ছে... (অনুমতি চাইলে "অনুমতি দিন" চাপুন)', 'info');
+            try {
+                const p = await getPosition();
+                if (p.acc > MAX_ACCURACY) { gpsNote('gpsMsg', 'অবস্থানের নির্ভুলতা খুব কম (±' + toBn(p.acc) + ' মিটার)। খোলা জায়গায় গিয়ে আবার চেষ্টা করুন।', 'error'); return; }
+                const dist = Math.round(distanceM(p.lat, p.lng, Number(sg.lat), Number(sg.lng)));
+                const radius = Number(sg.radius) || DEFAULT_RADIUS;
+                if (dist > radius) { gpsNote('gpsMsg', 'আপনি বিদ্যালয় থেকে প্রায় ' + toBn(dist) + ' মিটার দূরে আছেন। অনুমোদিত সীমা ' + toBn(radius) + ' মিটার, তাই উপস্থিতি নেওয়া হয়নি।', 'error'); return; }
+                const rec = { id: Date.now(), date: today, name, type, time: nowTime(), lat: p.lat.toFixed(6), lng: p.lng.toFixed(6), acc: String(p.acc), dist: String(dist) };
+                const fresh = attList(); fresh.push(rec);
+                localStorage.setItem(ATT_KEY, JSON.stringify(fresh));
+                renderAttendance();
+                gpsNote('gpsMsg', name + '-এর ' + (type === 'in' ? 'আগমন' : 'প্রস্থান') + ' নথিভুক্ত হয়েছে (' + toBn(rec.time) + ', বিদ্যালয় থেকে ' + toBn(dist) + ' মিটার)।', 'ok');
+            } catch (e) { gpsNote('gpsMsg', e.message || String(e), 'error'); }
+            finally { b1.disabled = b2.disabled = false; }
+        }
+        function deleteAtt(id) {
+            if (!confirm('এই উপস্থিতির নথি মুছে ফেলতে চান?')) return;
+            localStorage.setItem(ATT_KEY, JSON.stringify(attList().filter(r => Number(r.id) !== Number(id))));
+            renderAttendance();
+        }
+        function renderAttendance() {
+            const sel = document.getElementById('gpsTeacher');
+            if (!sel) return;
+            if (!sel.options.length) TEACHERS.forEach(n => { const o = document.createElement('option'); o.value = n; o.textContent = n; sel.appendChild(o); });
+            const mEl = document.getElementById('attMonth');
+            if (!mEl.value) mEl.value = todayStr().slice(0, 7);
+            const all = attList().filter(r => r && r.date && r.name);
+            const typeTxt = t => t === 'in' ? 'আগমন' : 'প্রস্থান';
+            const th = 'class="p-2 border"', td = 'class="p-2 border"';
+
+            // আজকের তালিকা
+            const today = todayStr();
+            const tb = TEACHERS.map(n => {
+                const i = all.find(r => r.date === today && r.name === n && r.type === 'in');
+                const o = all.find(r => r.date === today && r.name === n && r.type === 'out');
+                return '<tr><td ' + td + '>' + escapeHtml(n) + '</td><td ' + td + '>' + (i ? '<span class="text-emerald-700 font-semibold">' + escapeHtml(toBn(i.time)) + '</span>' : '<span class="text-slate-400">—</span>') +
+                    '</td><td ' + td + '>' + (o ? escapeHtml(toBn(o.time)) : '<span class="text-slate-400">—</span>') + '</td></tr>';
+            }).join('');
+            document.getElementById('attToday').innerHTML = '<p class="text-xs font-semibold text-slate-500 mb-2">আজ: ' + escapeHtml(formatBnDate(today)) + '</p>' +
+                '<table class="w-full text-sm text-left border min-w-[420px]"><thead class="bg-slate-100"><tr><th ' + th + '>শিক্ষক</th><th ' + th + '>আগমন</th><th ' + th + '>প্রস্থান</th></tr></thead><tbody>' + tb + '</tbody></table>';
+
+            // মাসিক
+            const month = mEl.value;
+            document.getElementById('attPrintTitle').textContent = 'নখাপাড়া সরকারি প্রাথমিক বিদ্যালয় | শিক্ষকের মাসিক উপস্থিতি | ' + month;
+            const inMonth = all.filter(r => String(r.date).slice(0, 7) === month);
+            const sum = TEACHERS.map(n => {
+                const days = new Set(inMonth.filter(r => r.name === n && r.type === 'in').map(r => r.date));
+                return '<tr><td ' + td + '>' + escapeHtml(n) + '</td><td ' + td + ' style="text-align:center">' + escapeHtml(toBn(days.size)) + ' দিন</td></tr>';
+            }).join('');
+            document.getElementById('attSummary').innerHTML = '<table class="w-full text-sm text-left border min-w-[320px]"><thead class="bg-slate-100"><tr><th ' + th + '>শিক্ষক</th><th ' + th + ' style="text-align:center">উপস্থিত দিন</th></tr></thead><tbody>' + sum + '</tbody></table>';
+            const det = inMonth.slice().sort((a, b) => (b.date + b.time).localeCompare(a.date + a.time));
+            document.getElementById('attDetail').innerHTML = det.length
+                ? '<table class="w-full text-sm text-left border min-w-[560px] mt-4"><thead class="bg-slate-100"><tr><th ' + th + '>তারিখ</th><th ' + th + '>শিক্ষক</th><th ' + th + '>ধরন</th><th ' + th + '>সময়</th><th ' + th + '>দূরত্ব</th><th class="no-print p-2 border"></th></tr></thead><tbody>' +
+                  det.map(r => '<tr><td ' + td + '>' + escapeHtml(formatBnDate(r.date)) + '</td><td ' + td + '>' + escapeHtml(r.name) + '</td><td ' + td + '>' + typeTxt(r.type) + '</td><td ' + td + '>' + escapeHtml(toBn(r.time)) +
+                      '</td><td ' + td + '><a class="text-blue-600 hover:underline" target="_blank" rel="noopener" href="' + mapUrl(r.lat, r.lng) + '">' + escapeHtml(toBn(r.dist)) + ' মি.</a></td>' +
+                      '<td class="p-2 border no-print"><button onclick="deleteAtt(' + Number(r.id) + ')" class="text-red-400 hover:text-red-600 text-xs" title="মুছুন"><i class="fas fa-trash"></i></button></td></tr>').join('') + '</tbody></table>'
+                : '<p class="text-sm text-slate-400 py-4 text-center">এই মাসে কোনো উপস্থিতির নথি নেই।</p>';
+        }
+        function renderGps() { renderGeo(); renderAttendance(); }
+
+        // ---- সর্বশেষ পরিদর্শনের অবস্থান ----
+        let pendingVisitLoc = null;
+        function updateVisitLocUI() {
+            const f = document.getElementById('visitLocForm'), v = document.getElementById('visitLocText');
+            if (f) {
+                f.innerHTML = pendingVisitLoc
+                    ? '<a class="text-blue-600 hover:underline" target="_blank" rel="noopener" href="' + mapUrl(pendingVisitLoc.lat, pendingVisitLoc.lng) + '"><i class="fas fa-location-dot"></i> ' + escapeHtml(coordText(pendingVisitLoc)) + '</a> <span class="text-xs text-slate-500">(±' + escapeHtml(toBn(pendingVisitLoc.acc || 0)) + ' মি.)</span>'
+                    : '<span class="text-slate-400">অবস্থান যোগ করা হয়নি</span>';
+                const cl = document.getElementById('visitLocClear'); if (cl) cl.classList.toggle('hidden', !pendingVisitLoc);
+            }
+            if (v) {
+                const g = savedVisitLoc();
+                v.innerHTML = g ? '<a class="text-blue-600 hover:underline" target="_blank" rel="noopener" href="' + mapUrl(g.lat, g.lng) + '"><i class="fas fa-location-dot"></i> পরিদর্শনের অবস্থান দেখুন</a>' : '';
+            }
+        }
+        async function captureVisitLoc() {
+            const btn = document.getElementById('visitLocBtn'); btn.disabled = true;
+            document.getElementById('visitLocForm').innerHTML = '<span class="text-blue-700">অবস্থান নেওয়া হচ্ছে...</span>';
+            try {
+                const p = await getPosition();
+                pendingVisitLoc = { lat: Number(p.lat.toFixed(6)), lng: Number(p.lng.toFixed(6)), acc: p.acc };
+            } catch (e) { alert(e.message || String(e)); }
+            finally { btn.disabled = false; updateVisitLocUI(); }
+        }
+        function clearVisitLoc() { pendingVisitLoc = null; updateVisitLocUI(); }
+
+        // ---- শিক্ষার্থীর বাড়ির অবস্থান ----
+        async function setStudentGeo(id) {
+            if (!confirm('আপনি কি এখন শিক্ষার্থীর বাড়ির কাছে আছেন? বর্তমান অবস্থান তার বাড়ির অবস্থান হিসেবে সংরক্ষিত হবে।')) return;
+            try {
+                const p = await getPosition();
+                if (p.acc > 100 && !confirm('অবস্থানের নির্ভুলতা কম (±' + toBn(p.acc) + ' মিটার)। তবুও সংরক্ষণ করবেন?')) return;
+                const map = studentGeoMap();
+                map[String(id)] = { lat: Number(p.lat.toFixed(6)), lng: Number(p.lng.toFixed(6)), acc: p.acc, at: Date.now() };
+                localStorage.setItem(STUDENT_GEO_KEY, JSON.stringify(map));
+                renderStudents();
+            } catch (e) { alert(e.message || String(e)); }
+        }
+        function cleanStudentGeo(id) {
+            const map = studentGeoMap();
+            if (map[String(id)]) { delete map[String(id)]; localStorage.setItem(STUDENT_GEO_KEY, JSON.stringify(map)); }
+        }
+
+        // ===================== মূল্যায়ন রেজিস্টার =====================
+        const EVAL_KEY = 'nakhapara_evaluation';
+        let evalTimer = null;
+
+        function evalData() { const d = readJson(EVAL_KEY); return (d && typeof d === 'object' && !Array.isArray(d)) ? d : {}; }
+
+        function gradeOf(total) {
+            if (total >= 80) return 'A+';
+            if (total >= 70) return 'A';
+            if (total >= 60) return 'A-';
+            if (total >= 50) return 'B';
+            if (total >= 40) return 'C';
+            if (total >= 33) return 'D';
+            return 'F';
+        }
+
+        function renderEval() {
+            const body = document.getElementById('evalBody');
+            if (!body) return;
+            const cls = document.getElementById('evalClass').value;
+            const sub = document.getElementById('evalSubject').value;
+            const data = evalData();
+            const list = students
+                .filter(s => s.className === cls)
+                .sort((a, b) => num(a.roll) - num(b.roll));
+
+            document.getElementById('evalPrintTitle').textContent = 'নখাপাড়া সরকারি প্রাথমিক বিদ্যালয় | ' + cls + ' | বিষয়: ' + sub;
+
+            if (!list.length) {
+                body.innerHTML = '<tr><td colspan="6" class="p-6 text-center text-slate-400">এই শ্রেণিতে কোনো শিক্ষার্থী নেই। "শিক্ষার্থী প্রোফাইল" ট্যাবে গিয়ে যোগ করুন।</td></tr>';
+                document.getElementById('evalSummary').textContent = '';
+                return;
+            }
+
+            body.innerHTML = list.map(s => {
+                const rec = data[cls + '|' + sub + '|' + s.id] || {};
+                const inp = (field, max) =>
+                    '<input type="text" inputmode="decimal" data-bn-digits data-eval="' + field + '" data-max="' + max + '" data-sid="' + Number(s.id) + '" autocomplete="off" placeholder="০" ' +
+                    'class="w-20 border rounded p-1 text-center focus:ring-1 focus:ring-brand-500 outline-none" value="' + escapeHtml(rec[field] || '') + '">';
+                return '<tr data-row="' + Number(s.id) + '">' +
+                    '<td class="p-2 border">' + escapeHtml(s.roll) + '</td>' +
+                    '<td class="p-2 border">' + escapeHtml(s.name) + '</td>' +
+                    '<td class="p-2 border">' + inp('c', 40) + '</td>' +
+                    '<td class="p-2 border">' + inp('s', 60) + '</td>' +
+                    '<td class="p-2 border font-bold" data-total></td>' +
+                    '<td class="p-2 border font-bold" data-grade></td></tr>';
+            }).join('');
+            recalcEval();
+        }
+
+        function recalcEval() {
+            let sum = 0, filled = 0, fails = 0;
+            document.querySelectorAll('#evalBody tr[data-row]').forEach(tr => {
+                const c = tr.querySelector('[data-eval="c"]'), s = tr.querySelector('[data-eval="s"]');
+                const hasAny = c.value.trim() !== '' || s.value.trim() !== '';
+                const tEl = tr.querySelector('[data-total]'), gEl = tr.querySelector('[data-grade]');
+                // সর্বোচ্চ নম্বর পেরোলে লাল দাগ
+                let bad = false;
+                [c, s].forEach(i => {
+                    const over = num(i.value) > Number(i.dataset.max);
+                    i.classList.toggle('border-red-500', over); i.classList.toggle('bg-red-50', over);
+                    if (over) bad = true;
+                });
+                if (!hasAny) { tEl.textContent = ''; gEl.textContent = ''; gEl.className = 'p-2 border font-bold'; return; }
+                if (bad) { tEl.textContent = '—'; gEl.textContent = 'নম্বর বেশি'; gEl.className = 'p-2 border font-bold text-red-600'; return; }
+                const total = num(c.value) + num(s.value);
+                const g = gradeOf(total);
+                tEl.textContent = fmtBn(total);
+                gEl.textContent = g;
+                gEl.className = 'p-2 border font-bold ' + (g === 'F' ? 'text-red-600' : g.startsWith('A') ? 'text-emerald-700' : 'text-slate-800');
+                sum += total; filled++; if (g === 'F') fails++;
+            });
+            document.getElementById('evalSummary').textContent = filled
+                ? 'নম্বর দেওয়া হয়েছে: ' + toBn(filled) + ' জন | গড়: ' + fmtBn(sum / filled) + ' | অকৃতকার্য (F): ' + toBn(fails) + ' জন'
+                : '';
+        }
+
+        function saveEval() {
+            const cls = document.getElementById('evalClass').value;
+            const sub = document.getElementById('evalSubject').value;
+            const data = evalData();
+            document.querySelectorAll('#evalBody tr[data-row]').forEach(tr => {
+                const id = tr.dataset.row;
+                const c = tr.querySelector('[data-eval="c"]').value.trim();
+                const s = tr.querySelector('[data-eval="s"]').value.trim();
+                const key = cls + '|' + sub + '|' + id;
+                if (c === '' && s === '') delete data[key]; else data[key] = { c, s };
+            });
+            try { localStorage.setItem(EVAL_KEY, JSON.stringify(data)); } catch (e) { /* স্টোরেজ পূর্ণ */ }
+        }
+
+        document.addEventListener('input', e => {
+            const t = e.target;
+            if (!t || !t.closest || !t.closest('#evalBody')) return;
+            recalcEval();
+            clearTimeout(evalTimer);
+            evalTimer = setTimeout(() => { evalTimer = null; saveEval(); }, 500);
+        });
+        window.addEventListener('pagehide', () => { if (document.getElementById('evalBody')) saveEval(); });
+
+        // শিক্ষার্থী মোছা হলে তার নম্বরও মুছে ফেলা হয়
+        function cleanEvalFor(id) {
+            const d = evalData(); let ch = false;
+            Object.keys(d).forEach(k => { if (k.split('|')[2] === String(id)) { delete d[k]; ch = true; } });
+            if (ch) { try { localStorage.setItem(EVAL_KEY, JSON.stringify(d)); } catch (e) {} }
+        }
+
+        // ===================== ক্লাউড সিঙ্ক: অন্য ডিভাইসের বদল এলে পর্দা নতুন করে আঁকা =====================
+        window.onRemoteData = function (keys) {
+            const has = k => keys.has(k);
+            if (has('lessonPlans')) {
+                lessonPlans = Array.isArray(readJson('lessonPlans')) ? readJson('lessonPlans') : [];
+                renderLessonPlans();
+            }
+            if (has('students')) {
+                students = Array.isArray(readJson('students')) ? readJson('students') : [];
+                renderStudents();
+                renderEval();
+            }
+            if (has('lessonPlans') || has('students')) updateStats();
+            if (has('nakhapara_glance_data')) loadGlanceData();
+            if (has('nakhapara_senior_officers')) loadOfficers();
+            if (['nakhapara_last_visit_date', 'nakhapara_last_visit_officer', 'nakhapara_last_visit_desig', 'nakhapara_visit_desig_options'].some(has)) renderVisit(true);
+            if (has('nakhapara_evaluation') && !evalTimer) renderEval();
+            if (has('attendance')) renderAttendance();
+            if (has('nakhapara_school_geo')) renderGeo();
+            if (has('nakhapara_student_geo')) renderStudents();
+            if (has('nakhapara_last_visit_loc')) updateVisitLocUI();
+        };
+
+        // Initialize App
+        renderLessonPlans();
+        renderStudents();
+        updateStats();
+        renderVisit();
+        renderOfficers();
+        loadOfficers();
+        loadGlanceData();
+        renderEval();
+        renderGps();
+
+        // ফোন নম্বরের ঘরে (data-bn-keep) ইংরেজি অঙ্ক বাংলা হয়ে যায়, অন্য চিহ্ন (-, +) থাকে
+        document.addEventListener('input', e => {
+            const el = e.target;
+            if (!el || !el.hasAttribute || !el.hasAttribute('data-bn-keep')) return;
+            const v = el.value.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+            if (v !== el.value) {
+                const pos = el.selectionStart;
+                el.value = v;
+                try { el.setSelectionRange(pos, pos); } catch (err) {}
+            }
+        });
+        // এক নজরে ছক ও কর্মকর্তা টেবিলে লিখলেই মোট হিসাব হয় এবং নিজে থেকে সংরক্ষিত হয়
+        document.addEventListener('input', e => {
+            const t = e.target;
+            if (!t || !t.closest) return;
+            if (t.closest('#glance-sub-chart')) { recalcGlance(); scheduleSave('glance'); }
+            else if (t.closest('#glance-sub-officers')) scheduleSave('officers');
+        });
+        window.addEventListener('pagehide', flushPendingSaves);
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushPendingSaves(); });
+
+        // ===================== মোবাইল অ্যাপ (PWA) =====================
+        let deferredInstall = null;
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredInstall = e;
+            const b = document.getElementById('installAppBtn');
+            if (b) { b.classList.remove('hidden'); b.classList.add('flex'); }
+        });
+        window.addEventListener('appinstalled', () => {
+            deferredInstall = null;
+            const b = document.getElementById('installAppBtn');
+            if (b) { b.classList.add('hidden'); b.classList.remove('flex'); }
+        });
+        function installApp() {
+            if (!deferredInstall) return;
+            deferredInstall.prompt();
+            deferredInstall.userChoice.finally(() => {
+                deferredInstall = null;
+                const b = document.getElementById('installAppBtn');
+                if (b) { b.classList.add('hidden'); b.classList.remove('flex'); }
+            });
+        }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+        }
+    </script>
+
+    <!-- Firebase লগইন ও ক্লাউড সিঙ্ক (firebase-config.js-এ কনফিগ না বসানো পর্যন্ত নিষ্ক্রিয়) -->
+    <script type="module" src="firebase-sync.js"></script>
+</body>
+</html>
